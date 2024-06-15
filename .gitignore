@@ -1,0 +1,5 @@
+# Local opentofu/terraform files
+.terraform*
+
+# Local configuration files
+providers.config.auto.tfvars
