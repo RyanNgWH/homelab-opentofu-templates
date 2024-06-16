@@ -21,18 +21,22 @@ variable "proxmox_endpoint" {
 
 variable "proxmox_api_token_id" {
   type = string
+  sensitive = true
 }
 
 variable "proxmox_api_token_secret" {
   type = string
+  sensitive = true
 }
 
 variable "proxmox_ssh_username" {
   type = string
+  sensitive = true
 }
 
 variable "proxmox_ssh_private_key" {
   type = string
+  sensitive = true
 }
 
 ## Locals
