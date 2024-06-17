@@ -28,10 +28,6 @@ cloud_init_dns_servers = [
 cloud_init_ipv4 = "172.28.20.254/24"
 cloud_init_ipv4_gateway = "172.28.20.1"
 
-cloud_init_username = "your-username"
-cloud_init_ssh_keys = [
-  "your-ssh-public-keys"
-]
 # Optional variables (default values are specified below)
 # ---
 # VM configuration
