@@ -254,11 +254,3 @@ variable "cloud_init_ipv4" {
 variable "cloud_init_ipv4_gateway" {
   type = string
 }
-
-variable "cloud_init_ssh_keys" {
-  type = list(string)
-}
-
-variable "cloud_init_username" {
-  type = string
-}

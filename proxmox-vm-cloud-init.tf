@@ -3,16 +3,24 @@
 # Clone an existing proxmox cloud-init vm template
 
 locals {
+  timestamp = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+
+  description = <<-EOT
+    ${var.vm_description}
+
+    Updated on: ${local.timestamp}
+    EOT
+
   storage_discard = var.storage_enable_discard ? "on" : "ignore"
 
   multiqueue = var.cpu_sockets * var.cpu_cores
 }
 
-resource "proxmox_virtual_environment_vm" "vm-cloud-init" {
+resource "proxmox_virtual_environment_vm" "vm_cloud_init" {
   # VM configuration
   vm_id = "${var.vm_id}"
   name = "${var.vm_name}"
-  description = "${var.vm_description}"
+  description = "${local.description}"
   tags = var.vm_tags
 
   node_name = "${var.vm_node_name}"
@@ -55,7 +63,7 @@ resource "proxmox_virtual_environment_vm" "vm-cloud-init" {
     floating = "${var.memory_min_size}"
   }
 
-  # Storage configuration (cloud-init disk)
+  # Storage configuration
   disk {
     interface = "scsi0"
     datastore_id = "${var.storage_pool}"
@@ -84,6 +92,8 @@ resource "proxmox_virtual_environment_vm" "vm-cloud-init" {
 
   # Cloud-init configuration
   initialization {
+    interface = "ide2"
+
     dns {
       domain = "${var.cloud_init_dns_domain}"
       servers = var.cloud_init_dns_servers
@@ -94,11 +104,6 @@ resource "proxmox_virtual_environment_vm" "vm-cloud-init" {
         address = "${var.cloud_init_ipv4}"
         gateway = "${var.cloud_init_ipv4_gateway}"
       }
-    }
-
-    user_account {
-      username = "${var.cloud_init_username}"
-      keys = var.cloud_init_ssh_keys
     }
   }
 }
