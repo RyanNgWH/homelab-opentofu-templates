@@ -35,7 +35,9 @@ cloud_init_ssh_keys = [
 # Optional variables (default values are specified below)
 # ---
 # VM configuration
-vm_tags = []
+vm_tags = [    # Should be sorted, else will always report as a change.
+  "opentofu"
+]
 vm_resource_pool = ""
 
 vm_start_on_boot = false

@@ -18,7 +18,9 @@ variable "vm_description" {
 
 variable "vm_tags" {
   type = list(string)
-  default = []
+  default = [
+    "opentofu"
+  ]
 }
 
 variable "vm_node_name" {
