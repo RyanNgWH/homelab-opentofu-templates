@@ -80,6 +80,8 @@ An API token with the following permissions has to be created on your Proxmox in
 
 # Usage
 
+## Creating a virtual machine
+
 1. Create a copy of `examples/example-providers.config.auto.tfvars` (e.g `providers.config.auto.tfvars`) in the root folder and modify the variables as required.
 1. Create a copy of `example/example-cloud-init.config.tfvars` (e.g `your-vm-name.config.tfvars`) under the `configs` folder and modify the variables as required.
 1. Install all required plugins by initialising the directory with opentofu
@@ -90,7 +92,7 @@ tofu init
 
 ```
 
-3. Preview the changes to be made using the following command:
+4. Preview the changes to be made using the following command:
 
 ```
 
@@ -98,7 +100,7 @@ tofu plan -var-file=config/your-config-file
 
 ```
 
-4. If you are satisfied with the changes to be made, run the following command to apply the changes:
+5. If you are satisfied with the changes to be made, run the following command to apply the changes:
 
 ```
 
@@ -107,6 +109,18 @@ tofu apply -var-file=configs/your-config/file
 ```
 
 Opentofu will once again display the changes to be made, double check and approve the changes to apply the configuration.
+
+> **Note:**
+>
+> All virtual machines created here through OpenTofu should be exclusively managed by OpenTofu. Manual editing of the virtual machines elsewhere could lead to drift in the vm state and might be troublesome to fix.
+
+## Removing a virtual machine
+
+Run the following command with the configuration file of the virtual machine to be removed
+
+```
+tofu destroy -var-file=configs/your-config/file
+```
 
 # Configuration
 
