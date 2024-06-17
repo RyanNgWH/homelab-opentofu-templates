@@ -123,3 +123,17 @@ Located after the required variables, these variables are prepopulated with the 
 # Notes
 
 [Telmate's proxmox provider](https://github.com/Telmate/terraform-provider-proxmox) was initially used to as the provider for this project. However, due to its limitations it was replaced with [bpg's proxmox provider](https://github.com/bpg/terraform-provider-proxmox).
+
+# FAQ
+
+## Unable to authenticate user over SSH
+
+For tasks that utilises SSH for deployment, you have to first ensure that your SSH private key has been loaded in the `ssh-agent`.
+
+```bash
+# Add your ssh key to the ssh-agent
+ssh-add "/path/to/your/private/key"
+
+# Verify that the key has been added
+ssh-add -L
+```
