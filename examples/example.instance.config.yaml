@@ -1,0 +1,90 @@
+# Proxmox VM cloud-init template
+# ---
+# Variables for proxmox vm cloud-init template
+# Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_vm
+
+# Required variables (Should be changed)
+# ---
+# VM configuration
+vm_id: 12345
+vm_name: your-vm-name
+vm_description: your-vm-description
+
+vm_node_name: node-where-vm-is
+
+# Network configuration
+network_vlan_id: 20
+
+# Template clone
+clone_node_name: node-where-your-template-is
+clone_node_id: 99999
+
+# Cloud-init configuration
+cloud_init_dns_domain: your-domain
+cloud_init_dns_servers:
+  - your-dns-server
+
+cloud_init_ipv4: 172.28.20.254/24
+cloud_init_ipv4_gateway: 172.28.20.1
+
+# Default variables (default values are usually okay)
+# ---
+# VM configuration
+# Should be sorted, else will always report as a change.
+vm_tags:
+  - opentofu
+
+vm_resource_pool: ""
+
+vm_start_on_boot: false
+vm_startup_order: 100
+vm_startup_delay: 0
+vm_shutdown_delay: 0
+
+vm_enable_protection: false
+vm_started: true
+
+# System configuration
+system_qemu_enabled: true
+system_qemu_trim: true
+
+system_bios: ovmf
+system_machine_type: q35
+system_scsi_hardware: virtio-scsi-single
+
+system_boot_order:
+  - scsi0
+
+# CPU configuration
+cpu_type: host
+cpu_sockets: 1
+cpu_cores: 1
+cpu_flags:
+  - +md-clear
+  - +pcid
+  - +spec-ctrl
+  - +ssbd
+  - +pdpe1gb
+  - +aes
+
+cpu_enable_numa: true
+
+# Memory configuration
+memory_max_size: 1024
+memory_min_size: 1024
+
+# Network configuration
+network_bridge: vmbr0
+network_enable_firewall: true
+
+# Storage configuration (cloud-init disk)
+storage_pool: local-lvm
+storage_enable_backup: true
+storage_enable_discard: true
+storage_enable_io_threads: true
+storage_enable_replication: true
+storage_emulate_ssd: true
+storage_size: 8
+
+# Template clone
+clone_enable_full_clone: true

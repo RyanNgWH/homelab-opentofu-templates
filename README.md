@@ -20,34 +20,34 @@ Certain configurations are not supported by the Proxmox API, therefore, an SSH c
 
 1. Create a pam user for the SSH connection
 
-```bash
-sudo adduser opentofu
-```
+   ```bash
+   sudo adduser opentofu
+   ```
 
-2. Configure the `sudo` privilege for the user (requires passwordless sudo)
+1. Configure the `sudo` privilege for the user (requires passwordless sudo)
 
-```bash
-sudo visudo --file=/etc/sudoers.d/opentofu
-```
+   ```bash
+   sudo visudo --file=/etc/sudoers.d/opentofu
+   ```
 
-Add the following lines
+   Add the following lines
 
-```
-opentofu ALL=(root) NOPASSWD: /sbin/pvesm
-opentofu ALL=(root) NOPASSWD: /sbin/qm
-opentofu ALL=(root) NOPASSWD: /usr/bin/tee /var/lib/vz/*
-```
+   ```
+   opentofu ALL=(root) NOPASSWD: /sbin/pvesm
+   opentofu ALL=(root) NOPASSWD: /sbin/qm
+   opentofu ALL=(root) NOPASSWD: /usr/bin/tee /var/lib/vz/*
+   ```
 
-3. Add SSH public key file to the `~/.ssh/authorized_keys` file of the `opentofu` user.
+1. Add SSH public key file to the `~/.ssh/authorized_keys` file of the `opentofu` user.
 1. Test the SSH connection and password-less sudo
 
-```bash
-ssh -i "/path/to/private/key" opentofu@your-server sudo pvesm apiinfo
-```
+   ```bash
+   ssh -i "/path/to/private/key" opentofu@your-server sudo pvesm apiinfo
+   ```
 
-> Note:
->
-> If you have a clustered proxmox instance, this user has to be created with `sudo` privileges on all nodes in the cluster
+   > **Note:**
+   >
+   > If you have a clustered proxmox instance, this user has to be created with `sudo` privileges on all nodes in the cluster
 
 ### API token
 
@@ -82,57 +82,63 @@ An API token with the following permissions has to be created on your Proxmox in
 
 ## Creating a virtual machine
 
-1. Create a copy of `examples/example-providers.config.auto.tfvars` (e.g `providers.config.auto.tfvars`) in the root folder and modify the variables as required.
-1. Create a copy of `example/example-cloud-init.config.tfvars` (e.g `your-vm-name.config.tfvars`) under the `configs` folder and modify the variables as required.
-1. Install all required plugins by initialising the directory with opentofu
+1.  Create a copy of `examples/example-providers.config.auto.tfvars` (e.g `providers.config.auto.tfvars`) in the root folder and modify the variables as required.
+1.  Create a copy of `examples/example.instance.config.yaml` (e.g `application.config.yaml`) in the `configs` directory and modify the variables as required.
+    > The configuration file has to end with `config.yaml` and must be stored in the `configs` folder or it will not be loaded.
+1.  Install all required plugins by initialising the directory with opentofu
 
-```
+    ```
 
-tofu init
+    tofu init
 
-```
+    ```
 
-4. Preview the changes to be made using the following command:
+1.  Preview the changes to be made using the following command:
 
-```
+    ```
 
-tofu plan -var-file=config/your-config-file
+    tofu plan
 
-```
+    ```
 
-5. If you are satisfied with the changes to be made, run the following command to apply the changes:
+1.  If you are satisfied with the changes to be made, run the following command to apply the changes:
 
-```
+    ```
 
-tofu apply -var-file=configs/your-config/file
+    tofu apply
 
-```
+    ```
 
-Opentofu will once again display the changes to be made, double check and approve the changes to apply the configuration.
+    Opentofu will once again display the changes to be made, double check and approve the changes to apply the configuration.
 
-> **Note:**
->
-> All virtual machines created here through OpenTofu should be exclusively managed by OpenTofu. Manual editing of the virtual machines elsewhere could lead to drift in the vm state and might be troublesome to fix.
+    > **Note:**
+    >
+    > All virtual machines created here through OpenTofu should be exclusively managed by OpenTofu. Manual editing of the virtual machines elsewhere could lead to drift in the vm state and might be troublesome to fix.
 
 ## Removing a virtual machine
 
-Run the following command with the configuration file of the virtual machine to be removed
+1. Find the index of the instance to be removed
+   ```
+   tofu state list
+   tofu state show proxmox_virtual_environment_vm.vm_cloud_init[index]
+   ```
+1. Run the following command with the index of the virtual machine to be removed
 
-```
-tofu destroy -var-file=configs/your-config/file
-```
+   ```
+   tofu destroy -target proxmox_virtual_environment_vm.vm_cloud_init[index]
+   ```
 
 # Configuration
 
-All variables used in templates can be found in `examples/example-cloud-init.config.tfvars` and `examples/example-providers.config.auto.tfvars`. There are 2 types of variables (**required** & **optional**).
+All configuration variables required can be found in `examples/example.instance.config.yaml` and `examples/example-providers.config.auto.tfvars`. There are 2 types of variables (**requied** & **default**).
 
 ### Required variables
 
-Located at the top of the file, these variables have to be manually populated as they do not have any default values.
+Located at the top of the file, these variables should be modified to as the default values might not work.
 
-### Optional variables
+### Default variables
 
-Located after the required variables, these variables are prepopulated with the default variables in the respecive files. To override the default values, simple replace the values in the file. Default values will be used if these variables are omitted.
+Located after the required variables, these variables are prepopulated with the default values that are usually okay.
 
 # Notes
 
