@@ -6,7 +6,7 @@
 terraform {
   required_providers {
     proxmox = {
-      source = "bpg/proxmox"
+      source  = "bpg/proxmox"
       version = "~> 0.60"
     }
   }
@@ -20,22 +20,22 @@ variable "proxmox_endpoint" {
 }
 
 variable "proxmox_api_token_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "proxmox_api_token_secret" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "proxmox_ssh_username" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "proxmox_ssh_private_key" {
-  type = string
+  type      = string
   sensitive = true
 }
 
@@ -48,13 +48,13 @@ locals {
 ## Configuration
 provider "proxmox" {
   # Proxmox connection
-  endpoint = "${var.proxmox_endpoint}"
-  api_token = "${local.proxmox_api_token}"
+  endpoint  = var.proxmox_endpoint
+  api_token = local.proxmox_api_token
 
   # SSH
   ssh {
-    username = "${var.proxmox_ssh_username}"
-    private_key = "${var.proxmox_ssh_private_key}"
+    username    = var.proxmox_ssh_username
+    private_key = var.proxmox_ssh_private_key
 
     agent = true
   }
