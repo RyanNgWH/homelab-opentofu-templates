@@ -7,7 +7,7 @@ locals {
   proxmox_firewall_datacenter_instance_aliases_configs = {
     for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
     key => {
-      name    = instance.name
+      name    = "${instance.name}_${key}"
       cidr    = instance.ipv4_addresses[1][0]
       comment = "[${title(instance.name)}] ${instance.description}"
     }
