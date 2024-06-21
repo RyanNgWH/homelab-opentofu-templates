@@ -1,0 +1,9 @@
+# Proxmox cloud init instances
+# ---
+# Proxmox cloud init instances to manage using OpenTofu
+
+- name: ansible
+  config_name: ansible
+
+- name: piped
+  config_name: piped
