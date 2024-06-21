@@ -40,6 +40,7 @@ locals {
   }
 }
 
+# Firewall rules
 resource "proxmox_virtual_environment_firewall_rules" "vm_instances" {
   # Skip instances which do not have any rules specified
   for_each = { for key, value in local.proxmox_firewall_instance_vm_rules_configs : key => value if length(value.rules) > 0 }
@@ -64,4 +65,25 @@ resource "proxmox_virtual_environment_firewall_rules" "vm_instances" {
       sport   = try(rule.value.sport, "")
     }
   }
+}
+
+# Firewall options
+resource "proxmox_virtual_environment_firewall_options" "vm_instances" {
+  # Skip instances which do not have any rules specified
+  for_each = { for key, value in local.proxmox_firewall_instance_vm_rules_configs : key => value if length(value.rules) > 0 }
+
+  node_name = each.value.node_name
+  vm_id     = each.value.vm_id
+
+  enabled = try(each.value.options.enabled, true)
+
+  dhcp          = try(each.value.options.dhcp, false)
+  ndp           = try(each.value.options.ndp, false)
+  ipfilter      = try(each.value.options.ipfilter, true)
+  macfilter     = try(each.value.options.macfilter, true)
+  log_level_in  = try(each.value.options.log_level_in, "nolog")
+  log_level_out = try(each.value.options.log_level_out, "nolog")
+  input_policy  = try(each.value.options.input_policy, "DROP")
+  output_policy = try(each.value.options.output_policy, "ACCEPT")
+  radv          = try(each.value.options.radv, false)
 }
