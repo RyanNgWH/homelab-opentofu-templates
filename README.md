@@ -82,31 +82,33 @@ An API token with the following permissions has to be created on your Proxmox in
 
 ## Creating a virtual machine
 
-1.  Create a copy of `examples/example-providers.config.auto.tfvars` (e.g `providers.config.auto.tfvars`) in the root folder and modify the variables as required.
 1.  Create a copy of `examples/example.instance.config.yaml` (e.g `application.config.yaml`) in the `configs` directory and modify the variables as required.
     > The configuration file has to end with `config.yaml` and must be stored in the `configs` folder or it will not be loaded.
+1.  Add the virtual machine identifier and config file name to `proxmox-cloud-init-instances.config.yaml`
+
+    ```
+    - name: vm-identifer
+      config_name: application
+    ```
+
+    > If your configuration file is `my-application.config.yaml`, use `config_name: my-application`
+
 1.  Install all required plugins by initialising the directory with opentofu
 
     ```
-
     tofu init
-
     ```
 
 1.  Preview the changes to be made using the following command:
 
     ```
-
     tofu plan
-
     ```
 
 1.  If you are satisfied with the changes to be made, run the following command to apply the changes:
 
     ```
-
     tofu apply
-
     ```
 
     Opentofu will once again display the changes to be made, double check and approve the changes to apply the configuration.
@@ -117,20 +119,37 @@ An API token with the following permissions has to be created on your Proxmox in
 
 ## Removing a virtual machine
 
-1. Find the index of the instance to be removed
-   ```
-   tofu state list
-   tofu state show proxmox_virtual_environment_vm.vm_cloud_init[index]
-   ```
-1. Run the following command with the index of the virtual machine to be removed
+1. Find the identifier of the instance to be removed
 
    ```
-   tofu destroy -target proxmox_virtual_environment_vm.vm_cloud_init[index]
+   tofu state list
+   ```
+
+1. Run the following command with the identifier of the virtual machine to be removed
+
+   ```
+   tofu destroy -target <identifier>
+   ```
+
+   ### Example
+
+   The following commands will delete the `ansible` virtual machine
+
+   ```
+   > tofu state list
+   proxmox_virtual_environment_vm.vm_cloud_init["ansible"]
+   proxmox_virtual_environment_vm.vm_cloud_init["piped"]
+
+   > tofu destroy -target 'proxmox_virtual_environment_vm.vm_cloud_init["ansible"]'
    ```
 
 # Configuration
 
-All configuration variables required can be found in `examples/example.instance.config.yaml` and `examples/example-providers.config.auto.tfvars`. There are 2 types of variables (**requied** & **default**).
+Configuration variables for each resource type can be found in the `examples` directory.
+
+## Instances
+
+There are 2 types of variables (**requied** & **default**).
 
 ### Required variables
 
