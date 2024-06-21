@@ -17,10 +17,14 @@ locals {
             "configs/firewall/instance.${preset}.rules.config.tftpl",
             {
               # Basic rules variables
-              lan_airport_privilege_ipset = "+${proxmox_virtual_environment_firewall_ipset.datacenter["lan_airport_privilege"].name}"
+              lan_airport_privilege_ipset = "${proxmox_virtual_environment_firewall_ipset.datacenter["lan_airport_privilege"].name}"
               host_alias                  = proxmox_virtual_environment_firewall_alias.datacenter[key].name
               host_name                   = title(instance.name)
               host_description            = instance.description
+
+              # Uptime rules variables (to be changed when uptime vm is created)
+              uptime_alias = "serene_uptime_kuma"
+              uptime_name  = "Uptime Kuma"
             }
           ))
         ]),
@@ -45,12 +49,12 @@ resource "proxmox_virtual_environment_firewall_rules" "vm_instances" {
       action  = try(rule.value.action, "")
       type    = try(rule.value.type, "")
       comment = "[Opentofu] ${try(rule.value.comment, "")}"
-      dest    = try(rule.value.dest, "")
+      dest    = try(rule.value.dest, "") == "" ? "" : "${rule.value.dest_ipset ? "+" : ""}dc/${rule.value.dest}"
       dport   = try(rule.value.dport, "")
       log     = try(rule.value.log, "nolog")
       macro   = try(rule.value.macro, "")
       proto   = try(rule.value.proto, "")
-      source  = try(rule.value.source, "")
+      source  = try(rule.value.source, "") == "" ? "" : "${rule.value.source_ipset ? "+" : ""}dc/${rule.value.source}"
       sport   = try(rule.value.sport, "")
     }
   }

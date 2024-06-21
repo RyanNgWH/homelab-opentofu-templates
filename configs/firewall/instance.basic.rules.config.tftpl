@@ -6,15 +6,20 @@
 - action: ACCEPT
   type: in
   source: ${lan_airport_privilege_ipset}
+  source_ipset: true
   dest: ${host_alias}
+  dest_ipset: false
   macro: Ping
   comment: "[ICMP] [Allow] LAN & Tiny_Airport privilege to ${host_name} ${host_description} server"
   log: nolog
 
+# Allow SSH from lan & tiny airport privilege
 - action: ACCEPT
   type: in
   source: ${lan_airport_privilege_ipset}
+  source_ipset: true
   dest: ${host_alias}
+  dest_ipset: false
   macro: SSH
   comment: "[SSH] [Allow] LAN & Tiny_Airport privilege to ${host_name} ${host_description} server"
   log: notice
