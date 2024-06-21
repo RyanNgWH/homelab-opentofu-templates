@@ -32,7 +32,7 @@ Certain configurations are not supported by the Proxmox API, therefore, an SSH c
 
    Add the following lines
 
-   ```
+   ```conf
    opentofu ALL=(root) NOPASSWD: /sbin/pvesm
    opentofu ALL=(root) NOPASSWD: /sbin/qm
    opentofu ALL=(root) NOPASSWD: /usr/bin/tee /var/lib/vz/*
@@ -82,11 +82,11 @@ An API token with the following permissions has to be created on your Proxmox in
 
 ## Creating a virtual machine
 
-1.  Create a copy of `examples/example.instance.config.yaml` (e.g `application.config.yaml`) in the `configs` directory and modify the variables as required.
-    > The configuration file has to end with `config.yaml` and must be stored in the `configs` folder or it will not be loaded.
+1.  Create a copy of `examples/example.instance.config.yaml` (e.g `application.config.yaml`) in `configs/instances` and modify the variables as required.
+    > The configuration file has to end with `config.yaml` and must be stored in the `configs/instances` or it will not be loaded.
 1.  Add the virtual machine identifier and config file name to `proxmox-cloud-init-instances.config.yaml`
 
-    ```
+    ```yaml
     - name: vm-identifer
       config_name: application
     ```
@@ -117,9 +117,69 @@ An API token with the following permissions has to be created on your Proxmox in
     >
     > All virtual machines created here through OpenTofu should be exclusively managed by OpenTofu. Manual editing of the virtual machines elsewhere could lead to drift in the vm state and might be troublesome to fix.
 
-## Removing a virtual machine
+## Adding a firewall alias/ip set/rule
 
-1. Find the identifier of the instance to be removed
+### Firewall alias
+
+1. Add a new entry into `configs/firewall/datacenter.aliases.config.yaml`
+
+   ```yaml
+   - name: lan
+     cidr: "192.168.1.0/24"
+     comment: "[LAN] Entire lan network"
+   ```
+
+1. Review and apply the changes
+
+   ```
+   tofu apply
+   ```
+
+   > All managed instances will have an auto generated firewall alias and do not need to be created manually
+
+### Firewall ip sets
+
+1. Add a new entry into `configs/firewall/datacenter.ipsets.config.yaml`
+
+   ```yaml
+   - name: all_lans
+     comment: "[LAN1 + LAN2] All lans"
+
+     children:
+       - lan1
+       - lan2
+   ```
+
+   > Each entry in `children` must be a firewall alias
+
+1. Review and apply the changes
+
+   ```
+   tofu apply
+   ```
+
+### Firewall rule
+
+Firewall rules can only be created for instances that are managed by opentofu (i.e configuration file exists in `configs/instances`).
+
+1. Create a copy of `examples/example.rules.config.yaml` (e.g `application.rules.config.yaml`) in `configs/firewall` and modify the variables as required.
+
+   > **Configuration variables:**
+   >
+   > - [`presets`](#presets) - predefined firewall rules.
+   > - [`specifics`](#specifics) - custom firewall rules.
+
+   > The configuration file must be in the format `<application>.rules.config.yaml` and must be located in the `configs/firewall` directory or it will not be loaded. If your application is named `my-application`, create the file `configs/firewall/my-application.rules.config.yaml`
+
+1. Review and apply the changes
+
+   ```
+   tofu apply
+   ```
+
+## Removing a resource
+
+1. Find the identifier of the resource to be removed
 
    ```
    tofu state list
@@ -145,19 +205,29 @@ An API token with the following permissions has to be created on your Proxmox in
 
 # Configuration
 
-Configuration variables for each resource type can be found in the `examples` directory.
+Example configuration for each resource type can be found in the `examples` directory.
 
 ## Instances
 
 There are 2 types of variables (**requied** & **default**).
 
-### Required variables
+- **Required variables** - Located at the top of the file, these variables should be modified to as the default values might not work.
 
-Located at the top of the file, these variables should be modified to as the default values might not work.
+- **Default variables** - Located after the required variables, these variables are prepopulated with the default values that are usually okay.
 
-### Default variables
+## Firewall
 
-Located after the required variables, these variables are prepopulated with the default values that are usually okay.
+### Presets
+
+| Preset   | Description                                                                                               | Variables                                                                                                                                                                             |
+| -------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `basic`  | Basic firewall rules for most VMs.</br></br>Allows pinging & SSH from LAN & Tiny airport privilege hosts. | -                                                                                                                                                                                     |
+| `uptime` | Allows uptime monitoring of HTTPS websites on the host.                                                   | -                                                                                                                                                                                     |
+| `web`    | Allows user-specified hosts to access HTTP/HTTPS websites on the host.                                    | `source_alias` - Source hosts</br>`source_alias_is_ipset` - If source is an ip set</br>`source_description` - Description of source hosts</br>`application` - Web application of host |
+
+### Specifics
+
+Refer [here](https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_firewall_rules#rule) for description of the supported variables (everything apart from `enabled` & `iface`).
 
 # Notes
 
