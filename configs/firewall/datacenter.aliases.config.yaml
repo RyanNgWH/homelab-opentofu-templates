@@ -1,0 +1,16 @@
+# Proxmox datacenter firewall aliases
+# ---
+# Firewall aliases across the proxmox datacenter.
+
+- name: lan
+  cidr: "192.168.171.0/24"
+  comment: "[LAN] Entire lan network"
+
+# To be removed after creating instance
+- name: serene_uptime_kuma
+  cidr: "172.28.10.120"
+  comment: "[Serene] Uptime Kuma monitoring"
+
+- name: tiny_airport_privilege
+  cidr: "172.28.149.0/25"
+  comment: "[Tiny - Airport Privilege] Wireguard remote VPN privilege users"

@@ -1,0 +1,10 @@
+# Proxmox datacenter firewall IPsets
+# ---
+# Firewall IPsets across the proxmox datacenter.
+
+- name: lan_airport_privilege
+  comment: "[LAN + Airport - privilege] Entire lan network & Tiny airport privilege users"
+
+  children:
+    - lan
+    - tiny_airport_privilege
