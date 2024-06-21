@@ -1,0 +1,25 @@
+# Proxmox instance firewall rules (Web)
+# ---
+# Web firewall rules for individual instances.
+
+# Allow HTTP
+- action: ACCEPT
+  type: in
+  source: ${source_alias}
+  source_ipset: ${source_alias_is_ipset}
+  dest: ${host_alias}
+  dest_ipset: false
+  macro: HTTP
+  comment: "[${application} - HTTP] [Allow] ${source_description} to ${host_name} ${host_description} server"
+  log: nolog
+
+# Allow HTTPS
+- action: ACCEPT
+  type: in
+  source: ${source_alias}
+  source_ipset: ${source_alias_is_ipset}
+  dest: ${host_alias}
+  dest_ipset: false
+  macro: HTTPS
+  comment: "[${application} - HTTP] [Allow] ${source_description} to ${host_name} ${host_description} server"
+  log: nolog
