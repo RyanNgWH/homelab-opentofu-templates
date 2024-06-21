@@ -1,0 +1,20 @@
+# Proxmox instance firewall rules (Basic)
+# ---
+# Basic firewall rules for individual instances.
+
+# Allow Ping (ICMP) from lan & tiny airport privilege
+- action: ACCEPT
+  type: in
+  source: ${lan_airport_privilege_ipset}
+  dest: ${host_alias}
+  macro: Ping
+  comment: "[ICMP] [Allow] LAN & Tiny_Airport privilege to ${host_name} ${host_description} server"
+  log: nolog
+
+- action: ACCEPT
+  type: in
+  source: ${lan_airport_privilege_ipset}
+  dest: ${host_alias}
+  macro: SSH
+  comment: "[SSH] [Allow] LAN & Tiny_Airport privilege to ${host_name} ${host_description} server"
+  log: notice
