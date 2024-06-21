@@ -1,0 +1,14 @@
+# Proxmox instance firewall rules (Uptime)
+# ---
+# Uptime monitoring firewall rules for individual instances.
+
+# Allow HTTPS uptime monitoring
+- action: ACCEPT
+  type: in
+  source: ${uptime_alias}
+  source_ipset: false
+  dest: ${host_alias}
+  dest_ipset: false
+  macro: HTTPS
+  comment: "[Status - HTTPS] [Allow] ${uptime_name} to ${host_name} ${host_description} server"
+  log: nolog
