@@ -31,7 +31,7 @@ resource "proxmox_virtual_environment_firewall_alias" "datacenter" {
 
   name    = each.value.name
   cidr    = each.value.cidr
-  comment = each.value.comment
+  comment = "[Opentofu] ${each.value.comment}"
 }
 
 # Firewall ipsets
@@ -39,7 +39,7 @@ resource "proxmox_virtual_environment_firewall_ipset" "datacenter" {
   for_each = local.proxmox_datacenter_firewall_ipset_configs
 
   name    = each.value.name
-  comment = each.value.comment
+  comment = "[Opentofu] ${each.value.comment}"
 
   dynamic "cidr" {
     for_each = each.value.children
