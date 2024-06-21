@@ -1,0 +1,24 @@
+# Firewall rules example
+# ---
+# Example of a firewall rule configuration file.
+
+presets:
+  - name: basic
+  - name: uptime
+  - name: web
+    vars:
+      source_alias: all_lans
+      source_alias_is_ipset: true
+      source_description: All LAN networks
+      application: Piped
+
+specifics:
+  - action: ACCEPT
+    type: in
+    source: storage_nfs_clients
+    source_ipset: true
+    dest: sonora_openmediavault
+    dest_ipset: false
+    dport: 2049
+    comment: "[OpenMediaVault - NFS] [Allow] NFS clients to Sonora NFS server"
+    log: notice
