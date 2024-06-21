@@ -2,14 +2,6 @@
 # ---
 # Instances in proxmox created using cloud-init templates.
 
-variable "proxmox_cloud_init_instances" {
-  type = list(object({
-    name : string
-    config_name : string
-  }))
-  default = []
-}
-
 locals {
   # Instances to load
   proxmox_cloud_init_instances = yamldecode(file("proxmox-cloud-init-instances.config.yaml"))
