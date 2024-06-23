@@ -11,6 +11,8 @@ locals {
       cidr    = instance.ipv4_addresses[1][0]
       comment = "[${title(instance.name)}] ${instance.description}"
     }
+    # Ansible development environment does not need firewall alias
+    if key != "ansible"
   }
 
   # Manual aliases
