@@ -7,7 +7,7 @@
 # ---
 # VM configuration
 vm_id: 20254
-vm_name: ansible
+vm_name: ansible-vm
 vm_description: Ansible development environment
 
 vm_node_name: sierra

@@ -7,7 +7,7 @@ locals {
   proxmox_cloud_init_instances = yamldecode(file("proxmox-vm-cloud-init-instances.config.yaml"))
 
   # Instances configuration files
-  proxmox_cloud_init_instance_configs = { for instance in local.proxmox_cloud_init_instances : instance.name => yamldecode(file("configs/instances/${instance.config_name}.config.yaml")) }
+  proxmox_cloud_init_instance_configs = { for instance in local.proxmox_cloud_init_instances : instance.name => yamldecode(file("configs/instances/vm.${instance.config_name}.config.yaml")) }
 }
 
 resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
