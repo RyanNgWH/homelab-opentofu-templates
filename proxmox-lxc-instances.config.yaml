@@ -1,0 +1,13 @@
+# Proxmox LXC instances
+# ---
+# Proxmox LXC instances to manage using OpenTofu
+
+templates:
+  - name: debian-12.5-minimal
+    file_name: debian-12-minimal_12.5_amd64.tar.gz
+    datastore_id: local
+    node_name: sierra
+
+instances:
+  - name: ansible-lxc
+    config_name: ansible
