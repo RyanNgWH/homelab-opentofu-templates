@@ -3,6 +3,11 @@
 # Firewall configurations on the proxmox datacenter.
 
 locals {
+  proxmox_firewall_datacenter_no_alias_list = [
+    "ansible-vm",
+    "ansible-lxc"
+  ]
+
   # Instance aliases
   proxmox_firewall_datacenter_instance_aliases_configs = {
     for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
@@ -12,7 +17,7 @@ locals {
       comment = "[${title(instance.name)}] ${instance.description}"
     }
     # Ansible development environment does not need firewall alias
-    if key != "ansible"
+    if !contains(local.proxmox_firewall_datacenter_no_alias_list, key)
   }
 
   # Manual aliases
