@@ -11,3 +11,6 @@ templates:
 instances:
   - name: ansible-lxc
     config_name: ansible
+
+  - name: it-tools
+    config_name: it-tools
