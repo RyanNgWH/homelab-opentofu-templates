@@ -3,9 +3,11 @@
 # Firewall configurations on individual proxmox instances.
 
 locals {
+  proxmox_firewall_all_instances = merge(proxmox_virtual_environment_vm.cloud_init_instances, proxmox_virtual_environment_container.instances)
+
   # Every instance should have a firewall rules config file
-  proxmox_firewall_instance_vm_rules_configs = {
-    for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
+  proxmox_firewall_instance_rules_configs = {
+    for key, instance in local.proxmox_firewall_all_instances :
     key => {
       node_name = instance.node_name
       vm_id     = instance.id
@@ -19,7 +21,7 @@ locals {
               # Basic rules variables
               lan_airport_privilege_ipset = "${proxmox_virtual_environment_firewall_ipset.datacenter["lan_airport_privilege"].name}"
               host_alias                  = proxmox_virtual_environment_firewall_alias.datacenter[key].name
-              host_name                   = title(instance.name)
+              host_name                   = title(try(instance.name, instance.initialization[0].hostname))
               host_description            = instance.description
 
               # Uptime rules variables (to be changed when uptime vm is created)
@@ -41,9 +43,9 @@ locals {
 }
 
 # Firewall rules
-resource "proxmox_virtual_environment_firewall_rules" "vm_instances" {
+resource "proxmox_virtual_environment_firewall_rules" "all_instances" {
   # Skip instances which do not have any rules specified
-  for_each = { for key, value in local.proxmox_firewall_instance_vm_rules_configs : key => value if length(value.rules) > 0 }
+  for_each = { for key, value in local.proxmox_firewall_instance_rules_configs : key => value if length(value.rules) > 0 }
 
   node_name = each.value.node_name
   vm_id     = each.value.vm_id
@@ -68,9 +70,9 @@ resource "proxmox_virtual_environment_firewall_rules" "vm_instances" {
 }
 
 # Firewall options
-resource "proxmox_virtual_environment_firewall_options" "vm_instances" {
+resource "proxmox_virtual_environment_firewall_options" "all_instances" {
   # Skip instances which do not have any rules specified
-  for_each = { for key, value in local.proxmox_firewall_instance_vm_rules_configs : key => value if length(value.rules) > 0 }
+  for_each = { for key, value in local.proxmox_firewall_instance_rules_configs : key => value if length(value.rules) > 0 }
 
   node_name = each.value.node_name
   vm_id     = each.value.vm_id

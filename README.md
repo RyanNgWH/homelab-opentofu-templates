@@ -80,18 +80,20 @@ An API token with the following permissions has to be created on your Proxmox in
 
 # Usage
 
-## Creating a virtual machine
+## Creating a virtual machine/LXC container
 
-1.  Create a copy of `examples/example.instance.config.yaml` (e.g `application.config.yaml`) in `configs/instances` and modify the variables as required.
+The process of creating a virtual machines & LXC container is very similar. Where applicable, simply substitute `[vm/lxc]` with the respective virtualisation type.
+
+1.  Create a copy of `examples/example.[vm/lxc].instance.config.yaml` (e.g `[vm/lxc].application.config.yaml`) in `configs/instances` and modify the variables as required.
     > The configuration file has to end with `config.yaml` and must be stored in the `configs/instances` or it will not be loaded.
-1.  Add the virtual machine identifier and config file name to `proxmox-cloud-init-instances.config.yaml`
+1.  Add the virtual machine/lxc identifier and config file name to `proxmox-vm-cloud-init-instances.config.yaml` (or `proxmox-lxc-instances.config.yaml` for lxc containers)
 
     ```yaml
     - name: vm-identifer
       config_name: application
     ```
 
-    > If your configuration file is `my-application.config.yaml`, use `config_name: my-application`
+    > If your configuration file is `[vm/lxc].my-application.config.yaml`, use `config_name: my-application`
 
 1.  Install all required plugins by initialising the directory with opentofu
 
@@ -209,11 +211,11 @@ Example configuration for each resource type can be found in the `examples` dire
 
 ## Instances
 
-There are 2 types of variables (**requied** & **default**).
+There are 2 types of variables (**required** & **default**).
 
-- **Required variables** - Located at the top of the file, these variables should be modified to as the default values might not work.
+- **Required variables** - Located at the top of the file, these variables should be modified as there are no default values.
 
-- **Default variables** - Located after the required variables, these variables are prepopulated with the default values that are usually okay.
+- **Default variables** - Located after the required variables, these variables are prepopulated with the default values that are usually okay. To overwrite them, simply specify the values in the config file.
 
 ## Firewall
 
