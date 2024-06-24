@@ -9,16 +9,30 @@ locals {
   ]
 
   # Instance aliases
-  proxmox_firewall_datacenter_instance_aliases_configs = {
-    for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
-    key => {
-      name    = "${instance.name}_${key}"
-      cidr    = instance.ipv4_addresses[1][0]
-      comment = "[${title(instance.name)}] ${instance.description}"
+  proxmox_firewall_datacenter_instance_aliases_configs = merge(
+    # VM cloud-init instances
+    {
+      for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
+      key => {
+        name    = "${instance.name}_${key}"
+        cidr    = instance.ipv4_addresses[1][0]
+        comment = "[${title(instance.name)}] ${instance.description}"
+      }
+      # Ansible development environment does not need firewall alias
+      if !contains(local.proxmox_firewall_datacenter_no_alias_list, key)
+    },
+    # LXC instances
+    {
+      for key, instance in proxmox_virtual_environment_container.instances :
+      key => {
+        name    = "${instance.initialization[0].hostname}_${key}"
+        cidr    = split("/", instance.initialization[0].ip_config[0].ipv4[0].address)[0]
+        comment = "[${title(instance.initialization[0].hostname)}] ${instance.description}"
+      }
+      # Ansible development environment does not need firewall alias
+      if !contains(local.proxmox_firewall_datacenter_no_alias_list, key)
     }
-    # Ansible development environment does not need firewall alias
-    if !contains(local.proxmox_firewall_datacenter_no_alias_list, key)
-  }
+  )
 
   # Manual aliases
   proxmox_firewall_datacenter_manual_aliases       = yamldecode(file("configs/firewall/datacenter.aliases.config.yaml"))
