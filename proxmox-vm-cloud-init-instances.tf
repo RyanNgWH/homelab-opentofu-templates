@@ -71,6 +71,10 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
     size         = each.value.storage_size
   }
 
+  tpm_state {
+    datastore_id = each.value.storage_pool
+  }
+
   # Network configuration
   network_device {
     bridge   = each.value.network_bridge
