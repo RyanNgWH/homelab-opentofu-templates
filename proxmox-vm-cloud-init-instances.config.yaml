@@ -7,3 +7,6 @@
 
 - name: piped
   config_name: piped
+
+- name: vikunja
+  config_name: vikunja
