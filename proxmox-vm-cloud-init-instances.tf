@@ -17,68 +17,68 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   vm_id       = each.value.vm_id
   name        = each.value.vm_name
   description = each.value.vm_description
-  tags        = each.value.vm_tags
+  tags        = try(each.value.vm_tags, ["opentofu"])
 
   node_name = each.value.vm_node_name
-  pool_id   = each.value.vm_resource_pool
+  pool_id   = try(each.value.vm_resource_pool, "")
 
-  on_boot = each.value.vm_start_on_boot
+  on_boot = try(each.value.vm_start_on_boot, false)
   startup {
-    order      = each.value.vm_startup_order
-    up_delay   = each.value.vm_startup_delay
-    down_delay = each.value.vm_shutdown_delay
+    order      = try(each.value.vm_startup_order, 100)
+    up_delay   = try(each.value.vm_startup_delay, 0)
+    down_delay = try(each.value.vm_shutdown_delay, 0)
   }
 
-  protection = each.value.vm_enable_protection
-  started    = each.value.vm_started
+  protection = try(each.value.vm_enable_protection, false)
+  started    = try(each.value.vm_started, true)
 
   # System configuration
   agent {
-    enabled = each.value.system_qemu_enabled
-    trim    = each.value.system_qemu_trim
+    enabled = try(each.value.system_qemu_enabled, true)
+    trim    = try(each.value.system_qemu_trim, true)
   }
 
-  bios          = each.value.system_bios
-  machine       = each.value.system_machine_type
-  scsi_hardware = each.value.system_scsi_hardware
+  bios          = try(each.value.system_bios, "ovmf")
+  machine       = try(each.value.system_machine_type, "q35")
+  scsi_hardware = try(each.value.system_scsi_hardware, "virtio-scsi-single")
 
-  boot_order = each.value.system_boot_order
+  boot_order = try(each.value.system_boot_order, ["scsi0"])
 
   # CPU configuration
   cpu {
-    sockets = each.value.cpu_sockets
-    cores   = each.value.cpu_cores
-    flags   = each.value.cpu_flags
-    numa    = each.value.cpu_enable_numa
-    type    = each.value.cpu_type
+    sockets = try(each.value.cpu_sockets, 1)
+    cores   = try(each.value.cpu_cores, 1)
+    flags   = try(each.value.cpu_flags, ["+md-clear", "+pcid", "+spec-ctrl", "+ssbd", "+pdpe1gb", "+aes"])
+    numa    = try(each.value.cpu_enable_numa, true)
+    type    = try(each.value.cpu_type, "host")
   }
 
   # Memory configuration
   memory {
-    dedicated = each.value.memory_max_size
-    floating  = each.value.memory_min_size
+    dedicated = try(each.value.memory_max_size, 1024)
+    floating  = try(each.value.memory_min_size, 1024)
   }
 
   # Storage configuration
   disk {
     interface    = "scsi0"
-    datastore_id = each.value.storage_pool
-    backup       = each.value.storage_enable_backup
-    discard      = each.value.storage_enable_discard ? "on" : "ignore"
-    iothread     = each.value.storage_enable_io_threads
-    replicate    = each.value.storage_enable_replication
-    ssd          = each.value.storage_emulate_ssd
-    size         = each.value.storage_size
+    datastore_id = try(each.value.storage_pool, "local-lvm")
+    backup       = try(each.value.storage_enable_backup, true)
+    discard      = try(each.value.storage_enable_discard ? "on" : "ignore", true)
+    iothread     = try(each.value.storage_enable_io_threads, true)
+    replicate    = try(each.value.storage_enable_replication, true)
+    ssd          = try(each.value.storage_emulate_ssd, true)
+    size         = try(each.value.storage_size, 8)
   }
 
   tpm_state {
-    datastore_id = each.value.storage_pool
+    datastore_id = try(each.value.storage_pool, "local-lvm")
   }
 
   # Network configuration
   network_device {
-    bridge   = each.value.network_bridge
-    firewall = each.value.network_enable_firewall
+    bridge   = try(each.value.network_bridge, "vmbr0")
+    firewall = try(each.value.network_enable_firewall, true)
     vlan_id  = each.value.network_vlan_id
     queues   = each.value.cpu_sockets * each.value.cpu_cores
   }
@@ -87,7 +87,7 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   clone {
     node_name = each.value.clone_node_name
     vm_id     = each.value.clone_node_id
-    full      = each.value.clone_enable_full_clone
+    full      = try(each.value.clone_enable_full_clone, true)
   }
 
   # Cloud-init configuration
