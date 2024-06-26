@@ -43,7 +43,7 @@ vm_startup_delay: 0
 vm_shutdown_delay: 0
 
 vm_enable_protection: false
-vm_started: true
+vm_started: false
 
 # System configuration
 system_qemu_enabled: true
