@@ -1,6 +1,6 @@
 # Vikunja tasks management
 # ---
-# Variables for the Vikunaj tasks manager
+# Variables for the Vikunja tasks manager
 # Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_vm
 
 # Required variables (Should be changed)
