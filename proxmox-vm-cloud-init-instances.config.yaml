@@ -5,6 +5,9 @@
 - name: ansible-vm
   config_name: ansible
 
+- name: gamevault
+  config_name: gamevault
+
 - name: piped
   config_name: piped
 
