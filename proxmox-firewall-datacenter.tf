@@ -67,7 +67,7 @@ resource "proxmox_virtual_environment_firewall_ipset" "datacenter" {
     iterator = child
 
     content {
-      name    = proxmox_virtual_environment_firewall_alias.datacenter[child.value].name
+      name    = "dc/${proxmox_virtual_environment_firewall_alias.datacenter[child.value].name}"
       comment = proxmox_virtual_environment_firewall_alias.datacenter[child.value].comment
     }
   }

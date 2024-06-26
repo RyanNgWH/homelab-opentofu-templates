@@ -8,6 +8,9 @@
 - name: gamevault
   config_name: gamevault
 
+- name: gitea
+  config_name: gitea
+
 - name: piped
   config_name: piped
 

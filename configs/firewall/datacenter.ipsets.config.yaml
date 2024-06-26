@@ -8,3 +8,20 @@
   children:
     - lan
     - tiny_airport_privilege
+
+- name: lan_tiny_all
+  comment: "[LAN + Tiny - All] Entire lan network & All tiny networks"
+
+  children:
+    - lan
+    - sierra_server
+    - tiny_airport_all
+    - tiny_hotel
+    - tiny_hq
+    - tiny_island
+
+- name: gitea_ssh_clients
+  comment: "Clients accessing gitea using SSH"
+
+  children:
+    - winter_wiki

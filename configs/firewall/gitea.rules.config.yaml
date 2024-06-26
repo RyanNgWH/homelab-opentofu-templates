@@ -1,0 +1,24 @@
+# Vikunja tasks manager instance firewall rules
+# ---
+# Firewall rules for the Vikunja tasks management instance.
+
+presets:
+  - name: basic
+  - name: uptime
+  - name: web
+    vars:
+      source_alias: lan_tiny_all
+      source_alias_is_ipset: true
+      source_description: LAN & all tiny networks
+      application: Gitea
+
+specifics:
+  - action: ACCEPT
+    type: in
+    source: gitea_ssh_clients
+    source_ipset: true
+    dest: yena_gitea
+    dest_ipset: false
+    macro: SSH
+    comment: "[Gitea - SSH] [Allow] Gitea SSH clients to Gemma git hosting server"
+    log: nolog

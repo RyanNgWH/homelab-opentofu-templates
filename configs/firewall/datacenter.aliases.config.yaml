@@ -6,6 +6,36 @@
   cidr: "192.168.171.0/24"
   comment: "[LAN] Entire lan network"
 
+# To be removed after deployment
+- name: sierra_server
+  cidr: "172.28.1.10"
+  comment: "[Server] Proxmox hypervisor"
+
+- name: tiny_airport_all
+  cidr: "172.28.149.0/24"
+  comment: "[Tiny - Airport All] Wireguard remote VPN all users"
+
+- name: tiny_airport_guests
+  cidr: "172.28.149.128/25"
+  comment: "[Tiny - Airport Guests] Wireguard remote VPN guest users"
+
 - name: tiny_airport_privilege
   cidr: "172.28.149.0/25"
   comment: "[Tiny - Airport Privilege] Wireguard remote VPN privilege users"
+
+- name: tiny_hq
+  cidr: "172.28.10.0/24"
+  comment: "[Tiny - Management] Tiny management network"
+
+- name: tiny_hotel
+  cidr: "172.28.14.0/24"
+  comment: "[Tiny - DMZ] Tiny DMZ network"
+
+- name: tiny_island
+  cidr: "172.28.20.0/24"
+  comment: "[Tiny - Internal] Tiny internal network"
+
+# To be removed after deployment
+- name: winter_wiki
+  cidr: 172.28.20.170
+  comment: "[Winter] WikiJS wiki"
