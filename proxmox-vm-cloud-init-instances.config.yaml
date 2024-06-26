@@ -11,6 +11,9 @@
 - name: piped
   config_name: piped
 
+- name: send
+  config_name: send
+
 - name: vikunja
   config_name: vikunja
 
