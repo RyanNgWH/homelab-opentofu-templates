@@ -13,7 +13,7 @@ locals {
     # VM cloud-init instances
     {
       for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
-      key => {
+      "${instance.name}_${key}" => {
         name    = "${instance.name}_${key}"
         cidr    = instance.ipv4_addresses[1][0]
         comment = "[${title(instance.name)}] ${instance.description}"
@@ -24,7 +24,7 @@ locals {
     # LXC instances
     {
       for key, instance in proxmox_virtual_environment_container.instances :
-      key => {
+      "${instance.initialization[0].hostname}_${key}" => {
         name    = "${instance.initialization[0].hostname}_${key}"
         cidr    = split("/", instance.initialization[0].ip_config[0].ipv4[0].address)[0]
         comment = "[${title(instance.initialization[0].hostname)}] ${instance.description}"

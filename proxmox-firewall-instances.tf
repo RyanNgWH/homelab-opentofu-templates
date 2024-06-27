@@ -20,7 +20,7 @@ locals {
             {
               # Basic rules variables
               lan_airport_privilege_ipset = "${proxmox_virtual_environment_firewall_ipset.datacenter["lan_airport_privilege"].name}"
-              host_alias                  = proxmox_virtual_environment_firewall_alias.datacenter[key].name
+              host_alias                  = try(proxmox_virtual_environment_firewall_alias.datacenter["${instance.name}_${key}"].name, proxmox_virtual_environment_firewall_alias.datacenter["${instance.initialization[0].hostname}_${key}"].name)
               host_name                   = title(try(instance.name, instance.initialization[0].hostname))
               host_description            = instance.description
 
@@ -58,12 +58,12 @@ resource "proxmox_virtual_environment_firewall_rules" "all_instances" {
       action  = try(rule.value.action, "")
       type    = try(rule.value.type, "")
       comment = "[Opentofu] ${try(rule.value.comment, "")}"
-      dest    = try(rule.value.dest, "") == "" ? "" : "${rule.value.dest_ipset ? "+" : ""}dc/${rule.value.dest}"
+      dest    = try(rule.value.dest, "") == "" ? "" : "${rule.value.dest_ipset ? "+dc/${proxmox_virtual_environment_firewall_ipset.datacenter[rule.value.dest].name}" : "dc/${proxmox_virtual_environment_firewall_alias.datacenter[rule.value.dest].name}"}"
       dport   = try(rule.value.dport, "")
       log     = try(rule.value.log, "nolog")
       macro   = try(rule.value.macro, "")
       proto   = try(rule.value.proto, "")
-      source  = try(rule.value.source, "") == "" ? "" : "${rule.value.source_ipset ? "+" : ""}dc/${rule.value.source}"
+      source  = try(rule.value.source, "") == "" ? "" : "${rule.value.source_ipset ? "+dc/${proxmox_virtual_environment_firewall_ipset.datacenter[rule.value.source].name}" : "dc/${proxmox_virtual_environment_firewall_alias.datacenter[rule.value.source].name}"}"
       sport   = try(rule.value.sport, "")
     }
   }
