@@ -24,4 +24,4 @@
   comment: "Clients accessing gitea using SSH"
 
   children:
-    - winter_wiki
+    - winter_wikijs

@@ -22,3 +22,6 @@
 
 - name: wallos
   config_name: wallos
+
+- name: wikijs
+  config_name: wikijs

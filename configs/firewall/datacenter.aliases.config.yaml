@@ -36,11 +36,6 @@
   comment: "[Tiny - Internal] Tiny internal network"
 
 # To be removed after deployment
-- name: winter_wiki
-  cidr: 172.28.20.170
-  comment: "[Winter] WikiJS wiki"
-
-# To be removed after deployment
 - name: serene_uptime_kuma
   cidr: 172.28.20.120
   comment: "[Serene] Uptime Kuma monitoring"
