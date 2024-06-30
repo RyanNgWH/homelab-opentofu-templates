@@ -31,3 +31,6 @@
 
 - name: wikijs
   config_name: wikijs
+
+- name: your-spotify
+  config_name: your-spotify
