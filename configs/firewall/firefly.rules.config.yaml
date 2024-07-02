@@ -1,6 +1,6 @@
-# Vikunja tasks manager instance firewall rules
+# Firefly finance manager instance firewall rules
 # ---
-# Firewall rules for the Vikunja tasks management instance.
+# Firewall rules for the Firefly finance management instance.
 
 presets:
   - name: basic

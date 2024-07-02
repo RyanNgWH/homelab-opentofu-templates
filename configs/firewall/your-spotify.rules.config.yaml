@@ -1,6 +1,6 @@
-# Vikunja tasks manager instance firewall rules
+# Your-Spotify statistics instance firewall rules
 # ---
-# Firewall rules for the Vikunja tasks management instance.
+# Firewall rules for the Your-Spotify statistics instance.
 
 presets:
   - name: basic

@@ -1,6 +1,6 @@
-# Gamevault games management instance firewall rules
+# Paperless-ngx documents management instance firewall rules
 # ---
-# Firewall rules for the Gamevault games management instance.
+# Firewall rules for the Paperless-ngx documents management instance.
 
 presets:
   - name: basic

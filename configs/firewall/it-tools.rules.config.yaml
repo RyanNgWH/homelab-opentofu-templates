@@ -1,6 +1,6 @@
-# Piped youtube proxy instance firewall rules
+# It-Tools developer tools instance firewall rules
 # ---
-# Firewall rules for the Piped youtube proxy instance.
+# Firewall rules for the It-Tools developer tools instance.
 
 presets:
   - name: basic

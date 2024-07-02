@@ -1,6 +1,6 @@
-# Vikunja tasks manager instance firewall rules
+# Wallos subscription manager instance firewall rules
 # ---
-# Firewall rules for the Vikunja tasks management instance.
+# Firewall rules for the Wallos subscription management instance.
 
 presets:
   - name: basic

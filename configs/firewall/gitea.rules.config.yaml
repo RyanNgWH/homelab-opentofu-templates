@@ -1,6 +1,6 @@
-# Vikunja tasks manager instance firewall rules
+# Gitea git hosting instance firewall rules
 # ---
-# Firewall rules for the Vikunja tasks management instance.
+# Firewall rules for the Gitea git hosting instance.
 
 presets:
   - name: basic
