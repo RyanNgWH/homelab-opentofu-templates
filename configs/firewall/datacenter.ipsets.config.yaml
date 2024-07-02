@@ -25,3 +25,12 @@
 
   children:
     - winter_wikijs
+
+- name: radarr_clients
+  comment: "Clients accessing radarr movies manager"
+
+  children:
+    - bibi_bazarr
+    - hanni_homarr
+    - juliette_jellyseer
+    - pearl_prowlarr

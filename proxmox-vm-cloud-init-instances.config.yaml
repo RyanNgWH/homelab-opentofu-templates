@@ -20,6 +20,9 @@
 - name: piped
   config_name: piped
 
+- name: radarr
+  config_name: radarr
+
 - name: send
   config_name: send
 
