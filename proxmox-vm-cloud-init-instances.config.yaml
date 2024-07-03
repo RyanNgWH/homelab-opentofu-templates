@@ -26,6 +26,9 @@
 - name: send
   config_name: send
 
+- name: sonarr
+  config_name: sonarr
+
 - name: vikunja
   config_name: vikunja
 
