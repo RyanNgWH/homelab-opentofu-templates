@@ -14,6 +14,9 @@
 - name: gitea
   config_name: gitea
 
+- name: jellyfin
+  config_name: jellyfin
+
 - name: paperless
   config_name: paperless
 

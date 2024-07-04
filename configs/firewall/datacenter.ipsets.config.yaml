@@ -2,6 +2,23 @@
 # ---
 # Firewall IPsets across the proxmox datacenter.
 
+- name: gitea_ssh_clients
+  comment: "Clients accessing gitea using SSH"
+
+  children:
+    - winter_wikijs
+
+- name: jellyfin_clients
+  comment: "Clients accessing Jellyfin media streaming"
+
+  children:
+    - lan
+    - tiny_airport_privilege
+    - hanni_homarr
+    - juliette_jellyseer
+    - rainbow_radarr
+    - sapphire_sonarr
+
 - name: lan_airport_privilege
   comment: "[LAN + Airport - privilege] Entire lan network & Tiny airport privilege users"
 
@@ -19,12 +36,6 @@
     - tiny_hotel
     - tiny_hq
     - tiny_island
-
-- name: gitea_ssh_clients
-  comment: "Clients accessing gitea using SSH"
-
-  children:
-    - winter_wikijs
 
 - name: radarr_clients
   comment: "Clients accessing radarr movies manager"
