@@ -60,7 +60,7 @@ system_boot_order:
 # CPU configuration
 cpu_type: host
 cpu_sockets: 1
-cpu_cores: 4
+cpu_cores: 8
 cpu_flags:
   - +md-clear
   - +pcid
