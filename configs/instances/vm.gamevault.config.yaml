@@ -38,7 +38,7 @@ vm_tags:
 
 vm_resource_pool: ""
 
-vm_start_on_boot: false
+vm_start_on_boot: true
 vm_startup_order: 5
 vm_startup_delay: 0
 vm_shutdown_delay: 0
