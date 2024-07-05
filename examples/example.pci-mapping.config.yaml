@@ -1,0 +1,23 @@
+# Proxmox hardware PCI mapping template
+# ---
+# Variables for hardware PCI mappings
+# Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_hardware_mapping_pci
+
+# Required variables (Should be changed)
+# ---
+name: name-of-mapping
+comment: description-of-mapping
+
+mappings:
+  # Check Datacenter > Resource Mappings for id, path, iommu_group and subsystem_id
+  - id: "0002:0001"
+    path: "0000:01:02.0"
+    node: node-which-device-is-on
+    iommu_group: 00
+    subsystem_id: "0002:0001"
+
+    comment: description-of-device
+
+# Default variables (default values are usually okay)
+# ---
+mediated_devices: false

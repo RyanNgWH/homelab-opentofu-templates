@@ -106,4 +106,18 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
       }
     }
   }
+
+  # PCI passthrough configuration
+  dynamic "hostpci" {
+    for_each = try(each.value.pci_devices, [])
+    iterator = device
+
+    content {
+      device  = device.value.device
+      mapping = proxmox_virtual_environment_hardware_mapping_pci.all-mappings[device.value.mapping].name
+      pcie    = try(device.value.pcie, true)
+      rombar  = try(device.value.rombar, true)
+      xvga    = try(device.value.xvga, false)
+    }
+  }
 }

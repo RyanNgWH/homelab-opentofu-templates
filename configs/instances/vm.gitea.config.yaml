@@ -90,3 +90,6 @@ storage_size: 8
 
 # Template clone
 clone_enable_full_clone: true
+
+# PCI passthrough configuration
+pci_devices: []
