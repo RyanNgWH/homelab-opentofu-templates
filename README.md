@@ -57,6 +57,8 @@ An API token with the following permissions has to be created on your Proxmox in
 - Datastore.AllocateSpace
 - Datastore.AllocateTemplate
 - Datastore.Audit
+- Mapping.Modify
+- Mapping.Use
 - Pool.Allocate
 - Sys.Audit
 - Sys.Console
@@ -172,6 +174,27 @@ Firewall rules can only be created for instances that are managed by opentofu (i
    > - [`specifics`](#specifics) - custom firewall rules.
 
    > The configuration file must be in the format `<application>.rules.config.yaml` and must be located in the `configs/firewall` directory or it will not be loaded. If your application is named `my-application`, create the file `configs/firewall/my-application.rules.config.yaml`
+
+1. Review and apply the changes
+
+   ```
+   tofu apply
+   ```
+
+## Adding a PCI resource mapping
+
+1. Create a copy of `examples/example.pci-mapping.config.yaml` (e.g `application-gpu.rules.config.yaml`) in `configs/pci-mappings` and modify the variables as required.
+
+   > The configuration file has to end with `config.yaml` and must be stored in the `configs/pci-mappings` or it will not be loaded.
+
+1. Add the pci mapping identifier and config file name to `proxmox-pci-mappings.config.yaml`
+
+   ```yaml
+   - name: mapping-identifier
+     config_name: mapping-name
+   ```
+
+   > If your configuration file is `application-gpu.config.yaml`, use `config_name: application-gpu`
 
 1. Review and apply the changes
 

@@ -90,3 +90,11 @@ storage_size: 64
 
 # Template clone
 clone_enable_full_clone: true
+
+# PCI passthrough configuration
+pci_devices:
+  - device: hostpci0
+    mapping: jellyfin-gpu
+    pcie: true
+    rombar: true
+    xvga: false

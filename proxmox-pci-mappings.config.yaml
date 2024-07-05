@@ -1,0 +1,6 @@
+# Proxmox PCI mappings
+# ---
+# Proxmox PCI mappings to manage using OpenTofu
+
+- name: jellyfin-gpu
+  config_name: jellyfin-gpu
