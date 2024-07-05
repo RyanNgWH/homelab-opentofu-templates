@@ -88,6 +88,8 @@ storage_enable_replication: true
 storage_emulate_ssd: true
 storage_size: 8
 
+efi_disk: []
+
 # Template clone
 clone_enable_full_clone: true
 

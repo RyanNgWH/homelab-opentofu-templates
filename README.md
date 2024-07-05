@@ -271,3 +271,9 @@ ssh-add "/path/to/your/private/key"
 # Verify that the key has been added
 ssh-add -L
 ```
+
+# Notes
+
+## EFI-Disk & Secure boot
+
+The Jellyfin instance requires secure boot to be turned off, however, it is enabled by default as `pre_enrolled_keys` is enabled for the EFI-Disk. This currently cannot be automated as of bpg/proxmox v0.60.1 and has to be manually turned off in the bios.

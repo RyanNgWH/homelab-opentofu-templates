@@ -71,6 +71,18 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
     size         = try(each.value.storage_size, 8)
   }
 
+  dynamic "efi_disk" {
+    for_each = try(each.value.efi_disk, [])
+    iterator = efi
+
+    content {
+      datastore_id      = try(each.value.storage_pool, "local-lvm")
+      file_format       = try(efi.value.file_format, "raw")
+      type              = try(efi.value.type, "4m")
+      pre_enrolled_keys = try(efi.value.pre_enrolled_keys, true)
+    }
+  }
+
   tpm_state {
     datastore_id = try(each.value.storage_pool, "local-lvm")
   }
