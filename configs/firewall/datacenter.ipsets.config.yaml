@@ -12,12 +12,12 @@
   comment: "Clients accessing Jellyfin media streaming"
 
   children:
-    - lan
-    - tiny_airport_privilege
     - hanni_homarr
     - juliette_jellyseer
+    - lan
     - rainbow_radarr
     - sapphire_sonarr
+    - tiny_airport_privilege
 
 - name: lan_airport_privilege
   comment: "[LAN + Airport - privilege] Entire lan network & Tiny airport privilege users"
