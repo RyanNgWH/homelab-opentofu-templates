@@ -13,7 +13,7 @@
 
   children:
     - hanni_homarr
-    - juliette_jellyseer
+    - juliette_jellyseerr
     - lan
     - rainbow_radarr
     - sapphire_sonarr
@@ -43,7 +43,7 @@
   children:
     - bibi_bazarr
     - hanni_homarr
-    - juliette_jellyseer
+    - juliette_jellyseerr
     - pearl_prowlarr
 
 - name: sonarr_clients
@@ -52,5 +52,5 @@
   children:
     - bibi_bazarr
     - hanni_homarr
-    - juliette_jellyseer
+    - juliette_jellyseerr
     - pearl_prowlarr
