@@ -46,11 +46,6 @@
   comment: "[Hanni] Homarr dashboard"
 
 # To be removed after deployment
-- name: bibi_bazarr
-  cidr: 172.28.20.111
-  comment: "[Bibi] Bazarr subs download"
-
-# To be removed after deployment
 - name: juliette_jellyseerr
   cidr: 172.28.20.116
   comment: "[Juliette] Jellyseerr media request"

@@ -5,6 +5,9 @@
 - name: ansible-vm
   config_name: ansible
 
+- name: bazarr
+  config_name: bazarr
+
 - name: firefly
   config_name: firefly
 
