@@ -37,7 +37,7 @@
 
 # To be removed after deployment
 - name: serene_uptime_kuma
-  cidr: 172.28.20.120
+  cidr: 172.28.10.120
   comment: "[Serene] Uptime Kuma monitoring"
 
 # To be removed after deployment
@@ -51,9 +51,9 @@
   comment: "[Bibi] Bazarr subs download"
 
 # To be removed after deployment
-- name: juliette_jellyseer
+- name: juliette_jellyseerr
   cidr: 172.28.20.116
-  comment: "[Juliette] Jellyseer media request"
+  comment: "[Juliette] Jellyseerr media request"
 
 # To be removed after deployment
 - name: pearl_prowlarr
