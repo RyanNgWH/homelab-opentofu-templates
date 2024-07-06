@@ -72,8 +72,8 @@ cpu_flags:
 cpu_enable_numa: true
 
 # Memory configuration
-memory_max_size: 2048
-memory_min_size: 1024
+memory_max_size: 4096
+memory_min_size: 2048
 
 # Network configuration
 network_bridge: vmbr0
