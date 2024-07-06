@@ -15,7 +15,7 @@ locals {
       for key, instance in proxmox_virtual_environment_vm.cloud_init_instances :
       "${instance.name}_${key}" => {
         name    = "${instance.name}_${key}"
-        cidr    = instance.ipv4_addresses[1][0]
+        cidr    = split("/", instance.initialization[0].ip_config[0].ipv4[0].address)[0]
         comment = "[${title(instance.name)}] ${instance.description}"
       }
       # Ansible development environment does not need firewall alias
