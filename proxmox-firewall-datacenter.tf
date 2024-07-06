@@ -4,7 +4,6 @@
 
 locals {
   proxmox_firewall_datacenter_no_alias_list = [
-    "ansible-vm",
     "ansible-lxc"
   ]
 
