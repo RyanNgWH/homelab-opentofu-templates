@@ -4,13 +4,11 @@
 
 - name: gitea_ssh_clients
   comment: "Clients accessing gitea using SSH"
-
   children:
     - winter_wikijs
 
 - name: jellyfin_clients
   comment: "Clients accessing Jellyfin media streaming"
-
   children:
     - hanni_homarr
     - juliette_jellyseerr
@@ -21,14 +19,12 @@
 
 - name: lan_airport_privilege
   comment: "[LAN + Airport - privilege] Entire lan network & Tiny airport privilege users"
-
   children:
     - lan
     - tiny_airport_privilege
 
 - name: lan_tiny_all
   comment: "[LAN + Tiny - All] Entire lan network & All tiny networks"
-
   children:
     - lan
     - sierra_server
@@ -37,9 +33,16 @@
     - tiny_hq
     - tiny_island
 
+- name: qbittorrent_clients
+  comment: "Clients accessing qBittorrent download client"
+  children:
+    - hanni_homarr
+    - pearl_prowlarr
+    - rainbow_radarr
+    - sapphire_sonarr
+
 - name: radarr_clients
   comment: "Clients accessing radarr movies manager"
-
   children:
     - bibi_bazarr
     - hanni_homarr
@@ -48,7 +51,6 @@
 
 - name: sonarr_clients
   comment: "Clients accessing sonarr TV manager"
-
   children:
     - bibi_bazarr
     - hanni_homarr

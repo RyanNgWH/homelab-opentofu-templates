@@ -26,6 +26,9 @@
 - name: piped
   config_name: piped
 
+- name: qbittorrent
+  config_name: qbittorrent
+
 - name: radarr
   config_name: radarr
 
