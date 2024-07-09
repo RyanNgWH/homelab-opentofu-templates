@@ -1,0 +1,61 @@
+# Stirling PDF
+# ---
+# Variables for the Stirling PDF instance
+# Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_container
+
+# Required variables (Should be changed)
+# ---
+# LXC configuration
+lxc_id: 20020
+lxc_name: danielle
+lxc_description: Stirling PDF tools
+
+lxc_node_name: sierra
+
+# Network configuration
+network_vlan_id: 20
+network_dns_domain: tinynamoo.com
+network_dns_servers:
+  - 172.28.20.1
+
+network_ipv4: 172.28.20.20/24
+network_ipv4_gateway: 172.28.20.1
+
+# OS Configuration
+os_template_name: debian-12.5-minimal
+os_template_type: debian
+
+# Default variables (default values are usually okay)
+# ---
+# LXC configuration
+# Should be sorted, else will always report as a change.
+lxc_tags:
+  - ansible
+  - opentofu
+  - tiny-island
+lxc_resource_pool: ""
+
+vm_start_on_boot: true
+lxc_startup_order: 3
+lxc_startup_delay: 0
+lxc_shutdown_delay: 0
+
+lxc_started: true
+lxc_unprivileged: true
+lxc_nesting: true
+
+# CPU configuration
+cpu_cores: 1
+
+# Memory configuration
+memory_size: 512
+memory_swap: 512
+
+# Network configuration
+network_bridge: vmbr0
+network_enable_firewall: true
+network_interface_name: eth0
+
+# Storage configuration (cloud-init disk)
+storage_pool: local-lvm
+storage_size: 8
