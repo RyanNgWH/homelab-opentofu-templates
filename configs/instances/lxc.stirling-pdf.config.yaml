@@ -45,11 +45,11 @@ lxc_unprivileged: true
 lxc_nesting: true
 
 # CPU configuration
-cpu_cores: 1
+cpu_cores: 4
 
 # Memory configuration
-memory_size: 512
-memory_swap: 512
+memory_size: 2048
+memory_swap: 1024
 
 # Network configuration
 network_bridge: vmbr0
