@@ -22,3 +22,5 @@ specifics:
     dport: 2049
     comment: "[OpenMediaVault - NFS] [Allow] NFS clients to Sonora NFS server"
     log: notice
+
+options:

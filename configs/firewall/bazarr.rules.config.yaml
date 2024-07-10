@@ -13,3 +13,5 @@ presets:
       application: Bazarr
 
 specifics: []
+
+options:

@@ -22,3 +22,5 @@ specifics:
     macro: SSH
     comment: "[Gitea - SSH] [Allow] Gitea SSH clients to Gemma git hosting server"
     log: nolog
+
+options:

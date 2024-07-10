@@ -22,3 +22,5 @@ specifics:
     macro: HTTPS
     comment: "[Sonarr - HTTPS] [Allow] Sonarr clients to Sapphire Sonarr TV manager"
     log: nolog
+
+options:

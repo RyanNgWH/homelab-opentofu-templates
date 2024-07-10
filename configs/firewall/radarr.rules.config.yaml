@@ -22,3 +22,5 @@ specifics:
     macro: HTTPS
     comment: "[Radarr - HTTPS] [Allow] Radarr clients to Rainbow radarr movies manager"
     log: nolog
+
+options:

@@ -22,3 +22,5 @@ specifics:
     macro: HTTPS
     comment: "[qBittorrent - HTTPS] [Allow] qBittorrent clients to Dahlia qBittorrent download client"
     log: nolog
+
+options:

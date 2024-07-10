@@ -12,6 +12,8 @@ locals {
       node_name = instance.node_name
       vm_id     = instance.id
 
+      options = try(yamldecode(file("configs/firewall/${key}.rules.config.yaml")), { options = null }).options
+
       rules = concat(
         flatten([
           for preset in try(yamldecode(file("configs/firewall/${key}.rules.config.yaml")), { presets = [] }).presets :
@@ -59,12 +61,12 @@ resource "proxmox_virtual_environment_firewall_rules" "all_instances" {
       type    = try(rule.value.type, "")
       comment = "[Opentofu] ${try(rule.value.comment, "")}"
       dest    = try(rule.value.dest, "") == "" ? "" : "${rule.value.dest_ipset ? "+dc/${proxmox_virtual_environment_firewall_ipset.datacenter[rule.value.dest].name}" : "dc/${proxmox_virtual_environment_firewall_alias.datacenter[rule.value.dest].name}"}"
-      dport   = try(rule.value.dport, "")
+      dport   = try(rule.value.dest_port, "")
       log     = try(rule.value.log, "nolog")
       macro   = try(rule.value.macro, "")
-      proto   = try(rule.value.proto, "")
+      proto   = try(rule.value.protocol, "")
       source  = try(rule.value.source, "") == "" ? "" : "${rule.value.source_ipset ? "+dc/${proxmox_virtual_environment_firewall_ipset.datacenter[rule.value.source].name}" : "dc/${proxmox_virtual_environment_firewall_alias.datacenter[rule.value.source].name}"}"
-      sport   = try(rule.value.sport, "")
+      sport   = try(rule.value.source_port, "")
     }
   }
 }
