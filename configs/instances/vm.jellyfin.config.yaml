@@ -72,7 +72,7 @@ cpu_flags:
 cpu_enable_numa: true
 
 # Memory configuration
-memory_max_size: 8192
+memory_max_size: 12288
 memory_min_size: 4096
 
 # Network configuration
