@@ -17,6 +17,9 @@
 - name: gitea
   config_name: gitea
 
+- name: immich
+  config_name: immich
+
 - name: jellyfin
   config_name: jellyfin
 

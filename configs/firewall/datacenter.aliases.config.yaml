@@ -6,10 +6,9 @@
   cidr: "192.168.171.0/24"
   comment: "[LAN] Entire lan network"
 
-# To be removed after deployment
-- name: sierra_server
-  cidr: "172.28.1.10"
-  comment: "[Server] Proxmox hypervisor"
+- name: rosabelle_router_hotel
+  cidr: "172.28.14.1"
+  comment: "[Rosabelle] OPNsense Tiny_Hotel interface"
 
 - name: tiny_airport_all
   cidr: "172.28.149.0/24"
@@ -54,3 +53,13 @@
 - name: pearl_prowlarr
   cidr: 172.28.20.114
   comment: "[Pearl] Prowlarr media indexer"
+
+# To be removed after deployment
+- name: sierra_server
+  cidr: "172.28.1.10"
+  comment: "[Server] Proxmox hypervisor"
+
+# To e removed after deployment
+- name: sonora_openmediavault
+  cidr: "172.28.20.100"
+  comment: "[Sonora] OpenMediaVault storage management"
