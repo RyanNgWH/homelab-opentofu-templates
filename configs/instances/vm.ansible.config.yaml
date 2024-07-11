@@ -89,6 +89,9 @@ storage_size: 8
 
 efi_disk: []
 
+# Cloud-init configuration
+cloud_init_datastore: local
+
 # Template clone
 clone_enable_full_clone: true
 

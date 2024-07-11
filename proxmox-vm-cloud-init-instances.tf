@@ -10,6 +10,35 @@ locals {
   proxmox_cloud_init_instance_configs = { for instance in local.proxmox_cloud_init_instances : instance.name => yamldecode(file("configs/instances/vm.${instance.config_name}.config.yaml")) }
 }
 
+# Cloud-init network configuration
+resource "proxmox_virtual_environment_file" "cloud_init_instances_network_configs" {
+  for_each = local.proxmox_cloud_init_instance_configs
+
+  content_type = "snippets"
+  datastore_id = try(each.value.cloud_init_datastore, "local")
+  node_name    = each.value.vm_node_name
+
+  source_raw {
+    file_name = "${each.value.vm_id}_${each.value.vm_name}_cloud-init-network-config.yml"
+
+    data = <<-EOF
+      #cloud-config
+      network:
+        version: 2
+        ethernets:
+          enp6s18:
+            match:
+              name: enp6s18
+            addresses:
+              - ${each.value.cloud_init_ipv4}
+            gateway4: ${each.value.cloud_init_ipv4_gateway}
+            nameservers:
+              search: ${each.value.cloud_init_dns_domain}
+              addresses: ${join(",", each.value.cloud_init_dns_servers)}
+    EOF
+  }
+}
+
 resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   for_each = local.proxmox_cloud_init_instance_configs
 
@@ -106,17 +135,7 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   initialization {
     interface = "ide2"
 
-    dns {
-      domain  = each.value.cloud_init_dns_domain
-      servers = each.value.cloud_init_dns_servers
-    }
-
-    ip_config {
-      ipv4 {
-        address = each.value.cloud_init_ipv4
-        gateway = each.value.cloud_init_ipv4_gateway
-      }
-    }
+    network_data_file_id = proxmox_virtual_environment_file.cloud_init_instances_network_configs[each.key].id
   }
 
   # PCI passthrough configuration
