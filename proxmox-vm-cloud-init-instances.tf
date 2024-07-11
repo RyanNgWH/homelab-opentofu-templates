@@ -135,6 +135,10 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   initialization {
     interface = "ide2"
 
+    dns {
+      domain = each.value.cloud_init_dns_domain
+    }
+
     network_data_file_id = proxmox_virtual_environment_file.cloud_init_instances_network_configs[each.key].id
   }
 
