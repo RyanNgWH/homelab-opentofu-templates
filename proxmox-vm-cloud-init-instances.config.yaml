@@ -23,6 +23,9 @@
 - name: jellyfin
   config_name: jellyfin
 
+- name: jellyseerr
+  config_name: jellyseerr
+
 - name: paperless
   config_name: paperless
 

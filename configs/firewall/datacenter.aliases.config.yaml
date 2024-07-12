@@ -45,11 +45,6 @@
   comment: "[Hanni] Homarr dashboard"
 
 # To be removed after deployment
-- name: juliette_jellyseerr
-  cidr: 172.28.20.116
-  comment: "[Juliette] Jellyseerr media request"
-
-# To be removed after deployment
 - name: pearl_prowlarr
   cidr: 172.28.20.114
   comment: "[Pearl] Prowlarr media indexer"
