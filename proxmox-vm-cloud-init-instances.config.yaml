@@ -17,6 +17,9 @@
 - name: gitea
   config_name: gitea
 
+- name: homarr
+  config_name: homarr
+
 - name: immich
   config_name: immich
 

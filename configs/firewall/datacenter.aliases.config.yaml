@@ -40,11 +40,6 @@
   comment: "[Serene] Uptime Kuma monitoring"
 
 # To be removed after deployment
-- name: hanni_homarr
-  cidr: 172.28.10.130
-  comment: "[Hanni] Homarr dashboard"
-
-# To be removed after deployment
 - name: pearl_prowlarr
   cidr: 172.28.20.114
   comment: "[Pearl] Prowlarr media indexer"
