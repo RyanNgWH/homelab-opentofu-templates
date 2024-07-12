@@ -12,13 +12,13 @@ locals {
       node_name = instance.node_name
       vm_id     = instance.id
 
-      options = try(yamldecode(file("configs/firewall/${key}.rules.config.yaml")), { options = null }).options
+      options = try(yamldecode(file("configs/firewall/instance.${key}.rules.config.yaml")), { options = null }).options
 
       rules = concat(
         flatten([
-          for preset in try(yamldecode(file("configs/firewall/${key}.rules.config.yaml")), { presets = [] }).presets :
+          for preset in try(yamldecode(file("configs/firewall/instance.${key}.rules.config.yaml")), { presets = [] }).presets :
           yamldecode(templatefile(
-            "configs/firewall/instance.${preset.name}.rules.config.tftpl",
+            "configs/firewall/instance-preset.${preset.name}.rules.config.tftpl",
             {
               # Basic rules variables
               lan_airport_privilege_ipset = "${proxmox_virtual_environment_firewall_ipset.datacenter["lan_airport_privilege"].name}"
@@ -38,7 +38,7 @@ locals {
             }
           ))
         ]),
-        try(yamldecode(file("configs/firewall/${key}.rules.config.yaml")), { specifics = [] }).specifics
+        try(yamldecode(file("configs/firewall/instance.${key}.rules.config.yaml")), { specifics = [] }).specifics
       )
     }
   }

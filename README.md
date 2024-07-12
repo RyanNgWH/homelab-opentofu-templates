@@ -166,14 +166,14 @@ The process of creating a virtual machines & LXC container is very similar. Wher
 
 Firewall rules can only be created for instances that are managed by opentofu (i.e configuration file exists in `configs/instances`).
 
-1. Create a copy of `examples/example.rules.config.yaml` (e.g `application.rules.config.yaml`) in `configs/firewall` and modify the variables as required.
+1. Create a copy of `examples/example.instance.rules.config.yaml` (e.g `instance.application.rules.config.yaml`) in `configs/firewall` and modify the variables as required.
 
    > **Configuration variables:**
    >
    > - [`presets`](#presets) - predefined firewall rules.
    > - [`specifics`](#specifics) - custom firewall rules.
 
-   > The configuration file must be in the format `<application>.rules.config.yaml` and must be located in the `configs/firewall` directory or it will not be loaded. If your application is named `my-application`, create the file `configs/firewall/my-application.rules.config.yaml`
+   > The configuration file must be in the format `instance.<application>.rules.config.yaml` and must be located in the `configs/firewall` directory or it will not be loaded. If your application is named `my-application`, create the file `configs/firewall/my-application.rules.config.yaml`
 
 1. Review and apply the changes
 
