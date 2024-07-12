@@ -26,7 +26,7 @@ locals {
       "${instance.initialization[0].hostname}_${key}" => {
         name    = "${instance.initialization[0].hostname}_${key}"
         cidr    = split("/", instance.initialization[0].ip_config[0].ipv4[0].address)[0]
-        comment = "[${title(instance.initialization[0].hostname)}] ${instance.description}"
+        comment = "[${title(instance.initialization[0].hostname)}] ${trimspace(instance.description)}"
       }
       # Ansible development environment does not need firewall alias
       if !contains(local.proxmox_firewall_datacenter_no_alias_list, key)
