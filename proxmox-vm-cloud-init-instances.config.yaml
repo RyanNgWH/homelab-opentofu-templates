@@ -29,6 +29,9 @@
 - name: jellyseerr
   config_name: jellyseerr
 
+- name: miniflux
+  config_name: miniflux
+
 - name: paperless
   config_name: paperless
 

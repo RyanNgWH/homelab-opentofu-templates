@@ -1,0 +1,100 @@
+# Miniflux
+# ---
+# Variables for the Miniflux feed reader instance
+# Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_vm
+
+# Required variables (Should be changed)
+# ---
+# VM configuration
+vm_id: 20150
+vm_name: florence
+vm_description: Miniflux feed reader
+
+vm_node_name: sierra
+
+# Network configuration
+network_vlan_id: 20
+
+# Template clone
+clone_node_name: sierra
+clone_node_id: 99999
+
+# Cloud-init configuration
+cloud_init_dns_domain: tinynamoo.com
+cloud_init_dns_servers:
+  - 172.28.20.1
+
+cloud_init_ipv4: 172.28.20.150/24
+cloud_init_ipv4_gateway: 172.28.20.1
+
+# Default variables (default values are usually okay)
+# ---
+# VM configuration
+# Should be sorted, else will always report as a change.
+vm_tags:
+  - ansible
+  - opentofu
+  - tiny-island
+
+vm_resource_pool: ""
+
+vm_start_on_boot: true
+vm_startup_order: 3
+vm_startup_delay: 0
+vm_shutdown_delay: 0
+
+vm_enable_protection: true
+vm_started: true
+
+# System configuration
+system_qemu_enabled: true
+system_qemu_trim: true
+
+system_bios: ovmf
+system_machine_type: q35
+system_scsi_hardware: virtio-scsi-single
+
+system_boot_order:
+  - scsi0
+
+# CPU configuration
+cpu_type: host
+cpu_sockets: 1
+cpu_cores: 1
+cpu_flags:
+  - +md-clear
+  - +pcid
+  - +spec-ctrl
+  - +ssbd
+  - +pdpe1gb
+  - +aes
+
+cpu_enable_numa: true
+
+# Memory configuration
+memory_max_size: 1024
+memory_min_size: 1024
+
+# Network configuration
+network_bridge: vmbr0
+network_enable_firewall: true
+
+# Storage configuration (cloud-init disk)
+storage_pool: local-lvm
+storage_enable_backup: true
+storage_enable_discard: true
+storage_enable_io_threads: true
+storage_enable_replication: true
+storage_emulate_ssd: true
+storage_size: 8
+
+efi_disk: []
+
+# Cloud-init configuration
+cloud_init_datastore: local
+
+# Template clone
+clone_enable_full_clone: true
+
+# PCI passthrough configuration
+pci_devices: []
