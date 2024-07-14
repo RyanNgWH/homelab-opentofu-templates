@@ -33,6 +33,14 @@
     - tiny_hq
     - tiny_island
 
+- name: prowlarr_clients
+  comment: "Clients access Prowlarr indexers manager"
+  children:
+    - dahlia_qbittorrent
+    - hanni_homarr
+    - rainbow_radarr
+    - sapphire_sonarr
+
 - name: qbittorrent_clients
   comment: "Clients accessing qBittorrent download client"
   children:

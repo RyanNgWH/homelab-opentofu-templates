@@ -38,6 +38,9 @@
 - name: piped
   config_name: piped
 
+- name: prowlarr
+  config_name: prowlarr
+
 - name: qbittorrent
   config_name: qbittorrent
 

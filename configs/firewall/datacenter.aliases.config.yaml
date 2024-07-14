@@ -40,11 +40,6 @@
   comment: "[Serene] Uptime Kuma monitoring"
 
 # To be removed after deployment
-- name: pearl_prowlarr
-  cidr: 172.28.20.114
-  comment: "[Pearl] Prowlarr media indexer"
-
-# To be removed after deployment
 - name: sierra_server
   cidr: "172.28.1.10"
   comment: "[Server] Proxmox hypervisor"
