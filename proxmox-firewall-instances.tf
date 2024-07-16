@@ -27,7 +27,7 @@ locals {
               host_description            = instance.description
 
               # Uptime rules variables (to be changed when uptime vm is created)
-              uptime_alias = "serene_uptime_kuma"
+              uptime_alias = "serene_uptime-kuma"
               uptime_name  = "Uptime Kuma"
 
               # Web rules variables

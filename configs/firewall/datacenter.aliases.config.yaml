@@ -35,11 +35,6 @@
   comment: "[Tiny - Internal] Tiny internal network"
 
 # To be removed after deployment
-- name: serene_uptime_kuma
-  cidr: 172.28.10.120
-  comment: "[Serene] Uptime Kuma monitoring"
-
-# To be removed after deployment
 - name: sierra_server
   cidr: "172.28.1.10"
   comment: "[Server] Proxmox hypervisor"
