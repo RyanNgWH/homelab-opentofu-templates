@@ -3,8 +3,8 @@
 # Proxmox LXC instances to manage using OpenTofu
 
 templates:
-  - name: debian-12.5-minimal
-    file_name: debian-12-minimal_12.5_amd64.tar.gz
+  - name: debian-12.6-minimal
+    file_name: debian-12-minimal_12.6_amd64.tar.gz
     datastore_id: local
     node_name: sierra
 
