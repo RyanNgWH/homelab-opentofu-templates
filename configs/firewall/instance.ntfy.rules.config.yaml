@@ -1,0 +1,97 @@
+# Your-Spotify statistics instance firewall rules
+# ---
+# Firewall rules for the Your-Spotify statistics instance.
+
+presets:
+  - name: basic
+  - name: uptime
+  - name: web
+    vars:
+      source_alias: lan_airport_privilege
+      source_alias_is_ipset: true
+      source_description: LAN & Tiny_Airport privilege
+      application: Immich
+
+specifics:
+  - action: ACCEPT
+    type: in
+    source: ntfy_clients
+    source_ipset: true
+    dest: karina_ntfy
+    dest_ipset: false
+    macro: HTTPS
+    comment: "[Ntfy - HTTPS] [Allow] Ntfy clients to Karina Ntfy notification service"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    dest: karina_ntfy
+    dest_ipset: false
+    macro: SMTP
+    comment: "[Public - SMTP] [Allow] Any to Karina Ntfy notification service"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    dest: rosabelle_router_hq
+    dest_ipset: false
+    macro: Ping
+    comment: "[OPNsense - ICMP] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    dest: rosabelle_router_hq
+    dest_ipset: false
+    macro: DNS
+    comment: "[OPNsense - DNS] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router DNS server"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    dest: rosabelle_router_hq
+    dest_ipset: false
+    macro: NTP
+    comment: "[OPNsense - NTP] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router NTP server"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    dest: sonora_openmediavault
+    dest_ipset: false
+    dest_port: 88
+    protocol: udp
+    log: notice
+    comment: "[OpenMediaVault - Kerberos KDC] [Allow] Karina Ntfy notification service to Sonora storage management Kerberos KDC server"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    dest: sonora_openmediavault
+    dest_ipset: false
+    dest_port: 2049
+    protocol: tcp
+    log: notice
+    comment: "[OpenMediaVault - NFSv4] [Allow] Karina Ntfy notification service to Sonora storage management NFSv4 server"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    macro: HTTP
+    comment: "[Public - HTTP] [Allow] Karina Ntfy notification service to Any"
+
+  - action: ACCEPT
+    type: out
+    source: karina_ntfy
+    source_ipset: false
+    macro: HTTPS
+    comment: "[Public - HTTPS] [Allow] Karina Ntfy notification service to Any"
+
+options:
+  output_policy: REJECT

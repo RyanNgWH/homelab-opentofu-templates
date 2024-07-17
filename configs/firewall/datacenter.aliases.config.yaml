@@ -10,6 +10,10 @@
   cidr: "172.28.14.1"
   comment: "[Rosabelle] OPNsense Tiny_Hotel interface"
 
+- name: rosabelle_router_hq
+  cidr: "172.28.10.1"
+  comment: "[Rosabelle] OPNsense Tiny_HQ interface"
+
 - name: tiny_airport_all
   cidr: "172.28.149.0/24"
   comment: "[Tiny - Airport All] Wireguard remote VPN all users"
@@ -38,6 +42,16 @@
 - name: sierra_server
   cidr: "172.28.1.10"
   comment: "[Server] Proxmox hypervisor"
+
+# To be removed after deployment
+- name: sierra_proxmox
+  cidr: "172.28.10.10"
+  comment: "[Server] Proxmox hypervisor management interface"
+
+# To be removed after deployment
+- name: solar_scrutiny
+  cidr: "172.28.10.150"
+  comment: "[Solar] Scrutiny SMART monitoring"
 
 # To e removed after deployment
 - name: sonora_openmediavault

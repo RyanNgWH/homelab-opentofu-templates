@@ -33,8 +33,23 @@
     - tiny_hq
     - tiny_island
 
+- name: ntfy_clients
+  comment: "Clients accessing Ntfy notificiations service"
+  children:
+    - bibi_bazarr
+    - dahlia_qbittorrent
+    - pearl_prowlarr
+    - rainbow_radarr
+    - rosabelle_router_hq
+    - sana_wallos
+    - sapphire_sonarr
+    - serene_uptime-kuma
+    - sierra_proxmox
+    - solar_scrutiny
+    - sonora_openmediavault
+
 - name: prowlarr_clients
-  comment: "Clients access Prowlarr indexers manager"
+  comment: "Clients accessing Prowlarr indexers manager"
   children:
     - dahlia_qbittorrent
     - hanni_homarr

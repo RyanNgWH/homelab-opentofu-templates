@@ -32,6 +32,9 @@
 - name: miniflux
   config_name: miniflux
 
+- name: ntfy
+  config_name: ntfy
+
 - name: paperless
   config_name: paperless
 
