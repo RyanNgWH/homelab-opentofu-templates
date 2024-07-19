@@ -1,6 +1,6 @@
-# Paperless-ngx documents management instance firewall rules
+# Homarr dashboard instance firewall rules
 # ---
-# Firewall rules for the Paperless-ngx documents management instance.
+# Firewall rules for the Homarr dashboard instance.
 
 presets:
   - name: basic

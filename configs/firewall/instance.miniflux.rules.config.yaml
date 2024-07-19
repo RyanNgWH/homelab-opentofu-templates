@@ -1,6 +1,6 @@
-# Wallos subscription manager instance firewall rules
+# Miniflux feed reader instance firewall rules
 # ---
-# Firewall rules for the Wallos subscription management instance.
+# Firewall rules for the Miniflux feed reader instance.
 
 presets:
   - name: basic

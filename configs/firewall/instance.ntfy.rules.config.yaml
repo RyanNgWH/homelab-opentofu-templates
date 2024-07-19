@@ -1,6 +1,6 @@
-# Your-Spotify statistics instance firewall rules
+# Ntfy notifications service instance firewall rules
 # ---
-# Firewall rules for the Your-Spotify statistics instance.
+# Firewall rules for the Ntfy notifications service instance.
 
 presets:
   - name: basic

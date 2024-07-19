@@ -1,6 +1,6 @@
-# Your-Spotify statistics instance firewall rules
+# Immich photos management instance firewall rules
 # ---
-# Firewall rules for the Your-Spotify statistics instance.
+# Firewall rules for the Immich photos management instance.
 
 presets:
   - name: basic

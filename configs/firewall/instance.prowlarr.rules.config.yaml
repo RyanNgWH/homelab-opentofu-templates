@@ -1,6 +1,6 @@
-# Wikijs wiki engine instance firewall rules
+# Prowlarr indexers management instance firewall rules
 # ---
-# Firewall rules for the Wikijs wiki engine instance.
+# Firewall rules for the Prowlarr indexers management instance.
 
 presets:
   - name: basic
