@@ -49,11 +49,6 @@
   comment: "[Server] Proxmox hypervisor management interface"
 
 # To be removed after deployment
-- name: solar_scrutiny
-  cidr: "172.28.10.150"
-  comment: "[Solar] Scrutiny SMART monitoring"
-
-# To e removed after deployment
 - name: sonora_openmediavault
   cidr: "172.28.20.100"
   comment: "[Sonora] OpenMediaVault storage management"

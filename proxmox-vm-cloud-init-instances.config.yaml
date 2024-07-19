@@ -50,6 +50,9 @@
 - name: radarr
   config_name: radarr
 
+- name: scrutiny
+  config_name: scrutiny
+
 - name: send
   config_name: send
 
