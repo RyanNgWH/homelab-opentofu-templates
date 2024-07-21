@@ -65,7 +65,7 @@ resource "proxmox_virtual_environment_firewall_rules" "all_instances" {
       log     = try(rule.value.log, "nolog")
       macro   = try(rule.value.macro, "")
       proto   = try(rule.value.protocol, "")
-      source  = try(rule.value.source, "") == "" ? "" : "${rule.value.source_ipset ? "+dc/${proxmox_virtual_environment_firewall_ipset.datacenter[rule.value.source].name}" : "dc/${proxmox_virtual_environment_firewall_alias.datacenter[rule.value.source].name}"}"
+      source  = try(rule.value.source, null) == null ? "" : "${rule.value.source_ipset ? "+dc/${proxmox_virtual_environment_firewall_ipset.datacenter[rule.value.source].name}" : "dc/${proxmox_virtual_environment_firewall_alias.datacenter[rule.value.source].name}"}"
       sport   = try(rule.value.source_port, "")
     }
   }
