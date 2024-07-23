@@ -83,7 +83,7 @@ resource "proxmox_virtual_environment_firewall_options" "all_instances" {
 
   dhcp          = try(each.value.options.dhcp, false)
   ndp           = try(each.value.options.ndp, false)
-  ipfilter      = try(each.value.options.ipfilter, false)
+  ipfilter      = try(each.value.options.ipfilter, lookup(proxmox_virtual_environment_container.instances, each.key, null) == null ? false : true)
   macfilter     = try(each.value.options.macfilter, true)
   log_level_in  = try(each.value.options.log_level_in, "nolog")
   log_level_out = try(each.value.options.log_level_out, "nolog")
