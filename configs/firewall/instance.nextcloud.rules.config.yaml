@@ -1,0 +1,89 @@
+# Immich photos management instance firewall rules
+# ---
+# Firewall rules for the Immich photos management instance.
+
+presets:
+  - name: basic
+  - name: uptime
+  - name: web
+    vars:
+      source_alias: ""
+      source_alias_is_ipset: false
+      source_description: Any
+      application: Nextcloud
+
+specifics:
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    dest: rosabelle_router_hotel
+    dest_ipset: false
+    macro: Ping
+    comment: "[OPNsense - ICMP] [Allow] Wendy Nextcloud cloud storage to Rosabelle OPNsense router"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    dest: rosabelle_router_hotel
+    dest_ipset: false
+    macro: DNS
+    comment: "[OPNsense - DNS] [Allow] Wendy Nextcloud cloud storage to Rosabelle OPNsense router DNS server"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    dest: rosabelle_router_hotel
+    dest_ipset: false
+    macro: NTP
+    comment: "[OPNsense - NTP] [Allow] Wendy Nextcloud cloud storage to Rosabelle OPNsense router NTP server"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    dest: sonora_openmediavault
+    dest_ipset: false
+    dest_port: 88
+    protocol: udp
+    log: notice
+    comment: "[OpenMediaVault - Kerberos KDC] [Allow] Wendy Nextcloud cloud storage to Sonora storage management Kerberos KDC server"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    dest: sonora_openmediavault
+    dest_ipset: false
+    dest_port: 2049
+    protocol: tcp
+    log: notice
+    comment: "[OpenMediaVault - NFSv4] [Allow] Wendy Nextcloud cloud storage to Sonora storage management NFSv4 server"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    dest: sunny_proton_bridge
+    dest_ipset: false
+    macro: SMTP
+    comment: "[Proton - SMTP] [Allow] Wendy Nextcloud cloud storage to Sunny Proton bridge smtp relay server"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    macro: HTTP
+    comment: "[Public - HTTP] [Allow] Wendy Nextcloud cloud storage to Any"
+
+  - action: ACCEPT
+    type: out
+    source: wendy_nextcloud
+    source_ipset: false
+    macro: HTTPS
+    comment: "[Public - HTTPS] [Allow] Wendy Nextcloud cloud storage to Any"
+
+options:
+  output_policy: REJECT

@@ -32,6 +32,9 @@
 - name: miniflux
   config_name: miniflux
 
+- name: nextcloud
+  config_name: nextcloud
+
 - name: ntfy
   config_name: ntfy
 
