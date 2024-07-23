@@ -55,5 +55,5 @@
 
 # To be removed after deployment
 - name: sunny_proton_bridge
-  cidr: "172.28.14.100"
+  cidr: "172.28.10.140"
   comment: "[Sunny] Proton bridge smtp relay"
