@@ -2,6 +2,11 @@
 # ---
 # Firewall IPsets across the proxmox datacenter.
 
+- name: gitea_https_clients
+  comment: "Clients accessing gitea using HTTPS"
+  children:
+    - rosabelle_router_island
+
 - name: gitea_ssh_clients
   comment: "Clients accessing gitea using SSH"
   children:

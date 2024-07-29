@@ -14,6 +14,10 @@
   cidr: "172.28.10.1"
   comment: "[Rosabelle] OPNsense Tiny_HQ interface"
 
+- name: rosabelle_router_island
+  cidr: "172.28.20.1"
+  comment: "[Rosabelle] OPNsense Tiny_Island interface"
+
 - name: tiny_airport_all
   cidr: "172.28.149.0/24"
   comment: "[Tiny - Airport All] Wireguard remote VPN all users"

@@ -15,6 +15,16 @@ presets:
 specifics:
   - action: ACCEPT
     type: in
+    source: gitea_https_clients
+    source_ipset: true
+    dest: yena_gitea
+    dest_ipset: false
+    macro: HTTPS
+    comment: "[Gitea - HTTPS] [Allow] Gitea HTTPS clients to Gemma git hosting server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
     source: gitea_ssh_clients
     source_ipset: true
     dest: yena_gitea
