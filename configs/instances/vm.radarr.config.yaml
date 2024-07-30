@@ -6,14 +6,14 @@
 # Required variables (Should be changed)
 # ---
 # VM configuration
-vm_id: 20115
+vm_id: 17115
 vm_name: rainbow
 vm_description: Radarr movies management
 
 vm_node_name: sierra
 
 # Network configuration
-network_vlan_id: 20
+network_vlan_id: 17
 
 # Template clone
 clone_node_name: sierra
@@ -22,10 +22,10 @@ clone_node_id: 99999
 # Cloud-init configuration
 cloud_init_dns_domain: tinynamoo.com
 cloud_init_dns_servers:
-  - 172.28.20.1
+  - 172.28.17.1
 
-cloud_init_ipv4: 172.28.20.115/24
-cloud_init_ipv4_gateway: 172.28.20.1
+cloud_init_ipv4: 172.28.17.115/24
+cloud_init_ipv4_gateway: 172.28.17.1
 
 # Default variables (default values are usually okay)
 # ---
@@ -34,7 +34,7 @@ cloud_init_ipv4_gateway: 172.28.20.1
 vm_tags:
   - ansible
   - opentofu
-  - tiny-island
+  - tiny-cinema
 
 vm_resource_pool: ""
 
