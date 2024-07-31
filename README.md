@@ -21,13 +21,13 @@ Certain configurations are not supported by the Proxmox API, therefore, an SSH c
 1. Create a pam user for the SSH connection
 
    ```bash
-   sudo adduser opentofu
+   adduser opentofu
    ```
 
 1. Configure the `sudo` privilege for the user (requires passwordless sudo)
 
    ```bash
-   sudo visudo --file=/etc/sudoers.d/opentofu
+   visudo --file=/etc/sudoers.d/opentofu
    ```
 
    Add the following lines
@@ -51,7 +51,7 @@ Certain configurations are not supported by the Proxmox API, therefore, an SSH c
 
 ### API token
 
-An API token with the following permissions has to be created on your Proxmox instance. Stricter permissions might be possible but these templates have only been tested with the following proxmox priviledges:
+An API token with the following permissions has to be created on your Proxmox instance. Stricter permissions might be possible but these templates have only been tested with the following proxmox privileges:
 
 - Datastore.Allocate
 - Datastore.AllocateSpace
