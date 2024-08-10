@@ -70,8 +70,8 @@
 - name: scrutiny_clients
   comment: "Clients accessing scrutiny smart monitoring service"
   children:
-    - sierra_proxmox
     - rosabelle_router_hq
+    - sierra_proxmox
 
 - name: sonarr_clients
   comment: "Clients accessing sonarr TV manager"
