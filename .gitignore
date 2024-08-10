@@ -4,3 +4,6 @@
 
 # Local configuration files
 providers.config.auto.tfvars
+
+# Macos files
+.DS_Store
