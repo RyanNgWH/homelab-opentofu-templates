@@ -67,6 +67,12 @@
     - juliette_jellyseerr
     - pearl_prowlarr
 
+- name: scrutiny_clients
+  comment: "Clients accessing scrutiny smart monitoring service"
+  children:
+    - sierra_proxmox
+    - rosabelle_router_hq
+
 - name: sonarr_clients
   comment: "Clients accessing sonarr TV manager"
   children:

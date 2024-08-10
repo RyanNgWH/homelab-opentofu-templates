@@ -12,6 +12,15 @@ presets:
       source_description: LAN & Tiny_Airport privilege
       application: Scrutiny
 
-specifics: []
+specifics:
+  - action: ACCEPT
+    type: in
+    source: scrutiny_clients
+    source_ipset: true
+    dest: solar_scrutiny
+    dest_ipset: false
+    macro: HTTPS
+    comment: "[Scrutiny - HTTPS] [Allow] Scrutiny clients to Scrutiny smart monitoring service"
+    log: nolog
 
 options:
