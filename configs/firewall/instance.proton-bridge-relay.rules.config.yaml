@@ -10,10 +10,10 @@ specifics:
     type: in
     source: smtp_clients
     source_ipset: true
-    dest: pearl_prowlarr
+    dest: sunny_proton-bridge-relay
     dest_ipset: false
     macro: SMTP
-    comment: "[Prowlarr - HTTPS] [Allow] Prowlarr clients to Pearl Prowlarr indexers manager"
+    comment: "[Postfix - SMTP] [Allow] SMTP clients to Sunny Proton bridge smtp relay"
     log: nolog
 
 options:
