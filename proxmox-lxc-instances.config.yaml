@@ -15,5 +15,8 @@ instances:
   - name: it-tools
     config_name: it-tools
 
+  - name: proton-bridge-relay
+    config_name: proton-bridge-relay
+
   - name: stirling-pdf
     config_name: stirling-pdf

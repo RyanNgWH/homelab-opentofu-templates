@@ -1,0 +1,19 @@
+# Bazarr subtitles managment instance firewall rules
+# ---
+# Firewall rules for the Bazarr subtitles managment instance.
+
+presets:
+  - name: basic
+
+specifics:
+  - action: ACCEPT
+    type: in
+    source: smtp_clients
+    source_ipset: true
+    dest: pearl_prowlarr
+    dest_ipset: false
+    macro: SMTP
+    comment: "[Prowlarr - HTTPS] [Allow] Prowlarr clients to Pearl Prowlarr indexers manager"
+    log: nolog
+
+options:

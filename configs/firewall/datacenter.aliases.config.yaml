@@ -56,8 +56,3 @@
 - name: sonora_openmediavault
   cidr: "172.28.20.100"
   comment: "[Sonora] OpenMediaVault storage management"
-
-# To be removed after deployment
-- name: sunny_proton_bridge
-  cidr: "172.28.10.140"
-  comment: "[Sunny] Proton bridge smtp relay"

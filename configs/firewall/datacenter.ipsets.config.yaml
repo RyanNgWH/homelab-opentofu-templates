@@ -80,3 +80,19 @@
     - hanni_homarr
     - juliette_jellyseerr
     - pearl_prowlarr
+
+- name: smtp_clients
+  comment: "Clients accessing proton bridge smtp relay server"
+  children:
+    - alora_firefly
+    - alyssa_paperless
+    - rosabelle_router_hq
+    - sana_wallos
+    - serene_uptime-kuma
+    - sierra_proxmox
+    - solar_scrutiny
+    - sonora_openmediavault
+    - tiffany_vikunja
+    - wendy_nextcloud
+    - winter_wikijs
+    - yena_gitea
