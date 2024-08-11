@@ -16,7 +16,7 @@ lxc_node_name: sierra
 network_vlan_id: 10
 network_dns_domain: tinynamoo.com
 network_dns_servers:
-  - 172.28.10.140
+  - 172.28.10.1
 
 network_ipv4: 172.28.10.140/24
 network_ipv4_gateway: 172.28.10.1
