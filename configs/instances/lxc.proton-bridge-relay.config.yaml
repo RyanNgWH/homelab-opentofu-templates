@@ -1,6 +1,6 @@
 # Proton Bridge Relay
 # ---
-# Variables for the Proton Bridge relay
+# Variables for the Proton Bridge smtp relay
 # Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_container
 
 # Required variables (Should be changed)
@@ -8,7 +8,7 @@
 # LXC configuration
 lxc_id: 10140
 lxc_name: sunny
-lxc_description: Proton bridge relay
+lxc_description: Proton bridge smtp relay
 
 lxc_node_name: sierra
 
