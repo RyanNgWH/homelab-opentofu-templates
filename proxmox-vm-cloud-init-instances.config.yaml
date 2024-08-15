@@ -32,6 +32,9 @@
 - name: miniflux
   config_name: miniflux
 
+- name: nas
+  config_name: nas
+
 - name: nextcloud
   config_name: nextcloud
 

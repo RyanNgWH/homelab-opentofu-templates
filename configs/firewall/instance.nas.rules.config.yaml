@@ -1,0 +1,83 @@
+# Network attached storage instance firewall rules
+# ---
+# Firewall rules for the network attached storage instance.
+
+presets:
+  - name: basic
+
+specifics:
+  - action: ACCEPT
+    type: in
+    source: nfs_clients_1
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    macro: Ping
+    comment: "[ICMP] [Allow] [List 1] NFS clients to Seori network attached storage server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    source: nfs_clients_2
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    macro: Ping
+    comment: "[ICMP] [Allow] [List 2] NFS clients to Seori network attached storage server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    source: nfs_clients_1
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    dest_port: 88
+    protocol: udp
+    comment: "[NAS - Kerberos KDC] [Allow] [List 1] NFS clients to Seori Kerberos KDC server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    source: nfs_clients_2
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    dest_port: 88
+    protocol: udp
+    comment: "[NAS - Kerberos KDC] [Allow] [List 2] NFS clients to Seori Kerberos KDC server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    source: nfs_clients_1
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    dest_port: 2049
+    protocol: tcp
+    comment: "[NAS - NFSv4] [Allow] [List 1] NFS clients to Seori NFSv4 server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    source: nfs_clients_2
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    dest_port: 2049
+    protocol: tcp
+    comment: "[NAS - NFSv4] [Allow] [List 2] NFS clients to Seori NFSv4 server"
+    log: nolog
+
+  - action: ACCEPT
+    type: in
+    source: lan_airport_privilege
+    source_ipset: true
+    dest: seori_nas
+    dest_ipset: false
+    macro: SMB
+    comment: "[NAS - SMB] [Allow] LAN & Tiny Airport Privilege to Seori SMB server"
+    log: notice
+
+options:

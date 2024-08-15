@@ -61,23 +61,23 @@ specifics:
     type: out
     source: karina_ntfy
     source_ipset: false
-    dest: sonora_openmediavault
+    dest: seori_nas
     dest_ipset: false
     dest_port: 88
     protocol: udp
     log: notice
-    comment: "[OpenMediaVault - Kerberos KDC] [Allow] Karina Ntfy notification service to Sonora storage management Kerberos KDC server"
+    comment: "[NAS - Kerberos KDC] [Allow] Karina Ntfy notification service to Seori network attached Kerberos KDC server"
 
   - action: ACCEPT
     type: out
     source: karina_ntfy
     source_ipset: false
-    dest: sonora_openmediavault
+    dest: seori_nas
     dest_ipset: false
     dest_port: 2049
     protocol: tcp
     log: notice
-    comment: "[OpenMediaVault - NFSv4] [Allow] Karina Ntfy notification service to Sonora storage management NFSv4 server"
+    comment: "[NAS - NFSv4] [Allow] Karina Ntfy notification service to Seori network attached NFSv4 server"
 
   - action: ACCEPT
     type: out

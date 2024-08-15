@@ -1,0 +1,22 @@
+# ---
+# Variables for NAS sSATA Conrtoller PCIe mappings
+# Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_hardware_mapping_pci
+
+# Required variables (Should be changed)
+# ---
+name: nas-ssata
+comment: "[Seori] NAS sSATA controller passthrough"
+
+mappings:
+  # Check Datacenter > Resource Mappings for id, path, iommu_group and subsystem_id
+  - id: "8086:8d62"
+    path: "0000:00:11.4"
+    node: sierra
+    iommu_group: 30
+    subsystem_id: "15d9:0832"
+
+    comment: "[Sierra] Supermicro X10SRL-F sSATA controller PCIe mapping"
+
+# Default variables (default values are usually okay)
+# ---
+mediated_devices: false

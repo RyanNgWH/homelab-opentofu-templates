@@ -4,3 +4,6 @@
 
 - name: jellyfin-gpu
   config_name: jellyfin-gpu
+
+- name: nas-ssata
+  config_name: nas-ssata

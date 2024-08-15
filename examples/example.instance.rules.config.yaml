@@ -17,10 +17,10 @@ specifics:
     type: in
     source: storage_nfs_clients
     source_ipset: true
-    dest: sonora_openmediavault
+    dest: seori_nas
     dest_ipset: false
     dport: 2049
-    comment: "[OpenMediaVault - NFS] [Allow] NFS clients to Sonora NFS server"
+    comment: "[NAS - NFS] [Allow] NFS clients to Seori NFS server"
     log: notice
 
 options:

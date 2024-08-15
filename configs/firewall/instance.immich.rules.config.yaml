@@ -44,23 +44,23 @@ specifics:
     type: out
     source: petal_immich
     source_ipset: false
-    dest: sonora_openmediavault
+    dest: seori_nas
     dest_ipset: false
     dest_port: 88
     protocol: udp
     log: notice
-    comment: "[OpenMediaVault - Kerberos KDC] [Allow] Petal Immich photos management to Sonora storage management Kerberos KDC server"
+    comment: "[NAS - Kerberos KDC] [Allow] Petal Immich photos management to Seori network attached Kerberos KDC server"
 
   - action: ACCEPT
     type: out
     source: petal_immich
     source_ipset: false
-    dest: sonora_openmediavault
+    dest: seori_nas
     dest_ipset: false
     dest_port: 2049
     protocol: tcp
     log: notice
-    comment: "[OpenMediaVault - NFSv4] [Allow] Petal Immich photos management to Sonora storage management NFSv4 server"
+    comment: "[NAS - NFSv4] [Allow] Petal Immich photos management to Seori network attached NFSv4 server"
 
   - action: ACCEPT
     type: out

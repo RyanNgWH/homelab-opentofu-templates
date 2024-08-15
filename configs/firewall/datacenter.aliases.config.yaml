@@ -51,8 +51,3 @@
 - name: sierra_proxmox
   cidr: "172.28.10.10"
   comment: "[Server] Proxmox hypervisor management interface"
-
-# To be removed after deployment
-- name: sonora_openmediavault
-  cidr: "172.28.20.100"
-  comment: "[Sonora] OpenMediaVault storage management"

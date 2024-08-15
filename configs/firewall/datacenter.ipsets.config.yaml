@@ -28,6 +28,39 @@
     - lan
     - tiny_airport_privilege
 
+- name: nfs_clients_1
+  comment: "[List 1] Clients accessing the network attached storage nfs service"
+  children:
+    - alora_firefly
+    - alyssa_paperless
+    - ansible-vm_ansible-vm
+    - bibi_bazarr
+    - dahlia_qbittorrent
+    - florence_miniflux
+    - hanni_homarr
+    - juliette_jellyseerr
+    - karina_ntfy
+    - marilyn_jellyfin
+    - melodee_your-spotify
+    - pearl_prowlarr
+    - petal_immich
+    - rainbow_radarr
+
+- name: nfs_clients_2
+  comment: "[List 2] Clients accessing the network attached storage nfs service"
+  children:
+    - sakura_gamevault
+    - sana_wallos
+    - sapphire_sonarr
+    - serene_uptime-kuma
+    - solar_scrutiny
+    - stevie_send
+    - tiffany_vikunja
+    - twyla_piped
+    - wendy_nextcloud
+    - winter_wikijs
+    - yena_gitea
+
 - name: ntfy_clients
   comment: "Clients accessing Ntfy notificiations service"
   children:
@@ -38,10 +71,10 @@
     - rosabelle_router_hq
     - sana_wallos
     - sapphire_sonarr
+    - seori_nas
     - serene_uptime-kuma
     - sierra_proxmox
     - solar_scrutiny
-    - sonora_openmediavault
 
 - name: prowlarr_clients
   comment: "Clients accessing Prowlarr indexers manager"
@@ -88,10 +121,10 @@
     - alyssa_paperless
     - rosabelle_router_hq
     - sana_wallos
+    - seori_nas
     - serene_uptime-kuma
     - sierra_proxmox
     - solar_scrutiny
-    - sonora_openmediavault
     - tiffany_vikunja
     - wendy_nextcloud
     - winter_wikijs
