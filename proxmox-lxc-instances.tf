@@ -40,11 +40,11 @@ resource "proxmox_virtual_environment_container" "instances" {
   node_name = each.value.lxc_node_name
   pool_id   = try(each.value.lxc_resource_pool, "")
 
-  start_on_boot = try(each.value.vm_start_on_boot, false)
+  start_on_boot = try(each.value.lxc_start_on_boot, false)
   startup {
     order      = try(each.value.lxc_startup_order, 100)
-    up_delay   = try(each.value.vm_startup_delay, 0)
-    down_delay = try(each.value.vm_shutdown_delay, 0)
+    up_delay   = try(each.value.lxc_startup_delay, 0)
+    down_delay = try(each.value.lxc_shutdown_delay, 0)
   }
 
   started      = try(each.value.lxc_started, true)

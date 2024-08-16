@@ -35,7 +35,7 @@ lxc_tags:
   - tiny-island
 lxc_resource_pool: ""
 
-vm_start_on_boot: true
+lxc_start_on_boot: true
 lxc_startup_order: 3
 lxc_startup_delay: 0
 lxc_shutdown_delay: 0

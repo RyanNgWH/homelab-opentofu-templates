@@ -33,7 +33,7 @@ lxc_tags:
   - opentofu
 lxc_resource_pool: ""
 
-vm_start_on_boot: false
+lxc_start_on_boot: false
 lxc_startup_order: 100
 lxc_startup_delay: 0
 lxc_shutdown_delay: 0
