@@ -105,6 +105,7 @@
   children:
     - rosabelle_router_hq
     - sierra_proxmox
+    - seori_nas
 
 - name: sonarr_clients
   comment: "Clients accessing sonarr TV manager"
