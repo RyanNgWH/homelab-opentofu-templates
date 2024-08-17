@@ -104,8 +104,8 @@
   comment: "Clients accessing scrutiny smart monitoring service"
   children:
     - rosabelle_router_hq
-    - sierra_proxmox
     - seori_nas
+    - sierra_proxmox
 
 - name: sonarr_clients
   comment: "Clients accessing sonarr TV manager"
@@ -124,7 +124,6 @@
     - sana_wallos
     - seori_nas
     - serene_uptime-kuma
-    - sierra_proxmox
     - solar_scrutiny
     - tiffany_vikunja
     - wendy_nextcloud

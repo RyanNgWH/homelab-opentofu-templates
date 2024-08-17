@@ -42,12 +42,6 @@
   cidr: "172.28.20.0/24"
   comment: "[Tiny - Internal] Tiny internal network"
 
-# To be removed after deployment
-- name: sierra_server
-  cidr: "172.28.1.10"
-  comment: "[Server] Proxmox hypervisor"
-
-# To be removed after deployment
 - name: sierra_proxmox
-  cidr: "172.28.10.10"
-  comment: "[Server] Proxmox hypervisor management interface"
+  cidr: "172.28.1.10"
+  comment: "[Sierra] Proxmox hypervisor"

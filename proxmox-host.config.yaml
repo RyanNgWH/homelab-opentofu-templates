@@ -1,0 +1,20 @@
+# Proxmox host configuration
+# ---
+# Proxmox host configuration options
+
+sierra:
+  dns_domain: tinynamoo.com
+  dns_servers:
+    - 172.28.1.1
+
+  hosts:
+    - address: 127.0.0.1
+      hostnames:
+        - localhost
+        - localhost.localdomain
+    - address: 172.28.1.1
+      hostnames:
+        - server.tinynamoo.com
+        - sierra
+
+  time_zone: Asia/Singapore
