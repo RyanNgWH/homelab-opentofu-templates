@@ -60,10 +60,11 @@ An API token with the following permissions has to be created on your Proxmox in
 - Mapping.Modify
 - Mapping.Use
 - Pool.Allocate
+- SDN.Use
 - Sys.Audit
 - Sys.Console
 - Sys.Modify
-- SDN.Use
+- User.Modify
 - VM.Allocate
 - VM.Audit
 - VM.Clone
@@ -78,7 +79,6 @@ An API token with the following permissions has to be created on your Proxmox in
 - VM.Migrate
 - VM.Monitor
 - VM.PowerMgmt
-- User.Modify
 
 # Usage
 
