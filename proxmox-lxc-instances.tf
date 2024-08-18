@@ -65,7 +65,7 @@ resource "proxmox_virtual_environment_container" "instances" {
 
   # Storage configuration
   disk {
-    datastore_id = try(each.value.storage_pool, "local-lvm")
+    datastore_id = try(each.value.storage_pool, "local-zfs")
     size         = try(each.value.storage_size, 8)
   }
 

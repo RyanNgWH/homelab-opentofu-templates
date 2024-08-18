@@ -272,6 +272,16 @@ ssh-add "/path/to/your/private/key"
 ssh-add -L
 ```
 
+## Mass creation of VMs failing (failed to aquire lock)
+
+This is an issue when the underlying storage for the VM disks is formatted with zfs. Mass creation of VMs might fail due to proxmox being unable to acquire a lock for the base template disk when cloning. A workaround is to lower the parallelism when running `tofu`.
+
+A value of `3` has been tested to work and any values greater might result in the error.
+
+```
+tofu apply -parallelism=3
+```
+
 # Notes
 
 ## EFI-Disk & Secure boot

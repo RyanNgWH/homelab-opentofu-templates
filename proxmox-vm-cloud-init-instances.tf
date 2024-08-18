@@ -91,7 +91,7 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   # Storage configuration
   disk {
     interface    = "scsi0"
-    datastore_id = try(each.value.storage_pool, "local-lvm")
+    datastore_id = try(each.value.storage_pool, "local-zfs")
     backup       = try(each.value.storage_enable_backup, true)
     discard      = try(each.value.storage_enable_discard ? "on" : "ignore", true)
     iothread     = try(each.value.storage_enable_io_threads, true)
@@ -105,7 +105,7 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
     iterator = efi
 
     content {
-      datastore_id      = try(each.value.storage_pool, "local-lvm")
+      datastore_id      = try(each.value.storage_pool, "local-zfs")
       file_format       = try(efi.value.file_format, "raw")
       type              = try(efi.value.type, "4m")
       pre_enrolled_keys = try(efi.value.pre_enrolled_keys, true)
@@ -113,7 +113,7 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   }
 
   tpm_state {
-    datastore_id = try(each.value.storage_pool, "local-lvm")
+    datastore_id = try(each.value.storage_pool, "local-zfs")
   }
 
   # Network configuration
@@ -133,7 +133,8 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
 
   # Cloud-init configuration
   initialization {
-    interface = "ide2"
+    datastore_id = try(each.value.storage_pool, "local-zfs")
+    interface    = "ide2"
 
     dns {
       domain = each.value.cloud_init_dns_domain

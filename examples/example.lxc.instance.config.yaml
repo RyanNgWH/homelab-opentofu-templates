@@ -55,5 +55,5 @@ network_enable_firewall: true
 network_interface_name: eth0
 
 # Storage configuration (cloud-init disk)
-storage_pool: local-lvm
+storage_pool: local-zfs
 storage_size: 8

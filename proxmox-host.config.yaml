@@ -15,6 +15,7 @@ sierra:
     - address: 172.28.1.1
       hostnames:
         - server.tinynamoo.com
+        - sierra.tinynamoo.com
         - sierra
 
   time_zone: Asia/Singapore

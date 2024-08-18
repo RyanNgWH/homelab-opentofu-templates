@@ -79,7 +79,7 @@ network_bridge: vmbr0
 network_enable_firewall: true
 
 # Storage configuration (cloud-init disk)
-storage_pool: local-lvm
+storage_pool: local-zfs
 storage_enable_backup: true
 storage_enable_discard: true
 storage_enable_io_threads: true
