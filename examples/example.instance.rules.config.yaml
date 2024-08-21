@@ -15,7 +15,7 @@ presets:
 specifics:
   - action: ACCEPT
     type: in
-    source: storage_nfs_clients
+    source: nfs_clients
     source_ipset: true
     dest: seori_nas
     dest_ipset: false

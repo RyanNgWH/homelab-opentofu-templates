@@ -8,66 +8,34 @@ presets:
 specifics:
   - action: ACCEPT
     type: in
-    source: nfs_clients_1
+    source: nfs_clients
     source_ipset: true
     dest: seori_nas
     dest_ipset: false
     macro: Ping
-    comment: "[ICMP] [Allow] [List 1] NFS clients to Seori network attached storage server"
+    comment: "[ICMP] [Allow] NFS clients to Seori network attached storage server"
     log: nolog
 
   - action: ACCEPT
     type: in
-    source: nfs_clients_2
-    source_ipset: true
-    dest: seori_nas
-    dest_ipset: false
-    macro: Ping
-    comment: "[ICMP] [Allow] [List 2] NFS clients to Seori network attached storage server"
-    log: nolog
-
-  - action: ACCEPT
-    type: in
-    source: nfs_clients_1
+    source: nfs_clients
     source_ipset: true
     dest: seori_nas
     dest_ipset: false
     dest_port: 88
     protocol: udp
-    comment: "[NAS - Kerberos KDC] [Allow] [List 1] NFS clients to Seori Kerberos KDC server"
+    comment: "[NAS - Kerberos KDC] [Allow] NFS clients to Seori Kerberos KDC server"
     log: nolog
 
   - action: ACCEPT
     type: in
-    source: nfs_clients_2
-    source_ipset: true
-    dest: seori_nas
-    dest_ipset: false
-    dest_port: 88
-    protocol: udp
-    comment: "[NAS - Kerberos KDC] [Allow] [List 2] NFS clients to Seori Kerberos KDC server"
-    log: nolog
-
-  - action: ACCEPT
-    type: in
-    source: nfs_clients_1
+    source: nfs_clients
     source_ipset: true
     dest: seori_nas
     dest_ipset: false
     dest_port: 2049
     protocol: tcp
-    comment: "[NAS - NFSv4] [Allow] [List 1] NFS clients to Seori NFSv4 server"
-    log: nolog
-
-  - action: ACCEPT
-    type: in
-    source: nfs_clients_2
-    source_ipset: true
-    dest: seori_nas
-    dest_ipset: false
-    dest_port: 2049
-    protocol: tcp
-    comment: "[NAS - NFSv4] [Allow] [List 2] NFS clients to Seori NFSv4 server"
+    comment: "[NAS - NFSv4] [Allow] NFS clients to Seori NFSv4 server"
     log: nolog
 
   - action: ACCEPT
