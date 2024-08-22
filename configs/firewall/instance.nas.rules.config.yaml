@@ -48,4 +48,14 @@ specifics:
     comment: "[NAS - SMB] [Allow] LAN & Tiny Airport Privilege to Seori SMB server"
     log: notice
 
+  - action: ACCEPT
+    type: in
+    source: sierra_proxmox
+    source_ipset: false
+    dest: seori_nas
+    dest_ipset: false
+    macro: SSH
+    comment: "[Sanoid - SSH] [Allow] Sierra proxmox hypervisor to Seori SSH server"
+    log: nolog
+
 options:

@@ -8,7 +8,7 @@
 # VM configuration
 vm_id: 10100
 vm_name: seori
-vm_description: Network Attached Storage server
+vm_description: Network Attached Storage
 
 vm_node_name: sierra
 
