@@ -39,6 +39,7 @@ lxc_startup_order: 100
 lxc_startup_delay: 0
 lxc_shutdown_delay: 0
 
+lxc_protection: false
 lxc_started: false
 lxc_unprivileged: true
 lxc_nesting: true

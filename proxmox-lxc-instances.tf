@@ -37,8 +37,9 @@ resource "proxmox_virtual_environment_container" "instances" {
   description = each.value.lxc_description
   tags        = try(each.value.lxc_tags, ["opentofu"])
 
-  node_name = each.value.lxc_node_name
-  pool_id   = try(each.value.lxc_resource_pool, "")
+  node_name  = each.value.lxc_node_name
+  pool_id    = try(each.value.lxc_resource_pool, "")
+  protection = try(each.value.lxc_protection, false)
 
   start_on_boot = try(each.value.lxc_start_on_boot, false)
   startup {
