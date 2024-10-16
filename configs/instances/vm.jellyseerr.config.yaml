@@ -1,3 +1,5 @@
+# @format
+
 # Jellyseerr
 # ---
 # Variables for the Jellyseerr media management instance
@@ -86,7 +88,7 @@ storage_enable_discard: true
 storage_enable_io_threads: true
 storage_enable_replication: true
 storage_emulate_ssd: true
-storage_size: 8
+storage_size: 16
 
 efi_disk: []
 
