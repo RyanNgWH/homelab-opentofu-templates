@@ -1,3 +1,5 @@
+# @format
+
 # Proxmox datacenter firewall IPsets
 # ---
 # Firewall IPsets across the proxmox datacenter.
@@ -92,6 +94,7 @@
   comment: "Clients accessing radarr movies manager"
   children:
     - bibi_bazarr
+    - dahlia_qbittorrent
     - hanni_homarr
     - juliette_jellyseerr
     - pearl_prowlarr
@@ -107,6 +110,7 @@
   comment: "Clients accessing sonarr TV manager"
   children:
     - bibi_bazarr
+    - dahlia_qbittorrent
     - hanni_homarr
     - juliette_jellyseerr
     - pearl_prowlarr
