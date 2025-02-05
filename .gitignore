@@ -7,3 +7,6 @@ providers.config.auto.tfvars
 
 # Macos files
 .DS_Store
+
+# LXC Templates
+files/lxc-templates/
