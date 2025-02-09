@@ -62,6 +62,7 @@
 - name: ntfy_clients
   comment: "Clients accessing Ntfy notificiations service"
   children:
+    - alora_firefly
     - bibi_bazarr
     - dahlia_qbittorrent
     - pearl_prowlarr
