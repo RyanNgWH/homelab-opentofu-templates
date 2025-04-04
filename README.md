@@ -287,3 +287,11 @@ tofu apply -parallelism=3
 ## EFI-Disk & Secure boot
 
 The Jellyfin & NAS instances requires secure boot to be turned off, however, it is enabled by default as `pre_enrolled_keys` is enabled for the EFI-Disk. This currently cannot be automated as of bpg/proxmox v0.60.1 and has to be manually turned off in the bios.
+
+# To-Do
+
+## Configure `rng` option for VMs
+
+The `rng` option in VM configurations can only be set by `root@pam` due to a limitation in the Proxmox API.
+
+This is currently not supported via API Token as of v0.74.1 and therefore cannot be configured.
