@@ -7,6 +7,10 @@ templates:
     file_name: debian-12-minimal_12.6_amd64.tar.gz
     datastore_id: local
     node_name: sierra
+  - name: debian-12.10-minimal
+    file_name: debian-12-minimal_12.10_amd64.tar.gz
+    datastore_id: local
+    node_name: sierra
 
 instances:
   - name: ansible-lxc
