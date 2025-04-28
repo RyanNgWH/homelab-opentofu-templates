@@ -59,4 +59,4 @@ network_interface_name: eth0
 
 # Storage configuration (cloud-init disk)
 storage_pool: local-zfs
-storage_size: 16
+storage_size: 8
