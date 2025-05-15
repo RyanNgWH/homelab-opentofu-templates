@@ -8,6 +8,9 @@
 - name: bazarr
   config_name: bazarr
 
+- name: drop
+  config_name: drop
+
 - name: firefly
   config_name: firefly
 
