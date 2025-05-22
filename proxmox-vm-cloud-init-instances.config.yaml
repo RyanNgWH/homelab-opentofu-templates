@@ -14,9 +14,6 @@
 - name: firefly
   config_name: firefly
 
-- name: gamevault
-  config_name: gamevault
-
 - name: gitea
   config_name: gitea
 

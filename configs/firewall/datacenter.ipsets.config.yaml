@@ -38,6 +38,7 @@
     - ansible-vm_ansible-vm
     - bibi_bazarr
     - dahlia_qbittorrent
+    - daisy_drop
     - florence_miniflux
     - hanni_homarr
     - juliette_jellyseerr
@@ -47,7 +48,6 @@
     - pearl_prowlarr
     - petal_immich
     - rainbow_radarr
-    - sakura_gamevault
     - sana_wallos
     - sapphire_sonarr
     - serene_uptime-kuma
