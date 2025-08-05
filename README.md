@@ -77,7 +77,6 @@ An API token with the following permissions has to be created on your Proxmox in
 - VM.Config.Network
 - VM.Config.Options
 - VM.Migrate
-- VM.Monitor
 - VM.PowerMgmt
 
 # Usage
