@@ -12,7 +12,7 @@ sierra:
       hostnames:
         - localhost
         - localhost.localdomain
-    - address: 172.28.1.1
+    - address: 172.28.1.10
       hostnames:
         - server.tinynamoo.com
         - sierra.tinynamoo.com
