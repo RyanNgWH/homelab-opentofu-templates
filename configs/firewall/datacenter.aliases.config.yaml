@@ -6,6 +6,22 @@
   cidr: "192.168.171.0/24"
   comment: "[LAN] Entire lan network"
 
+- name: lan_ryan_amalie_ethernet
+  cidr: "192.168.171.5"
+  comment: "[LAN - Amalie] Ryan's desktop (Ethernet)"
+
+- name: lan_ryan_amalie_wifi
+  cidr: "192.168.171.6"
+  comment: "[LAN - Amalie] Ryan's desktop (WiFi)"
+
+- name: lan_ryan_luna
+  cidr: "192.168.171.10"
+  comment: "[LAN - Luna] Ryan's laptop"
+
+- name: lan_ryan_rose
+  cidr: "192.168.171.11"
+  comment: "[LAN - Rose] Ryan's phone"
+
 - name: rosabelle_router_hotel
   cidr: "172.28.14.1"
   comment: "[Rosabelle] OPNsense Tiny_Hotel interface"
@@ -29,6 +45,14 @@
 - name: tiny_airport_privilege
   cidr: "172.28.149.0/25"
   comment: "[Tiny - Airport Privilege] Wireguard remote VPN privilege users"
+
+- name: tiny_airport_ryan_luna
+  cidr: "172.28.149.5"
+  comment: "[Tiny - Airport Luna] Wireguard remote Ryan's laptop"
+
+- name: tiny_airport_ryan_rose
+  cidr: "172.28.149.8"
+  comment: "[Tiny - Airport Rose] Wireguard remote Ryan's phone"
 
 - name: tiny_hq
   cidr: "172.28.10.0/24"

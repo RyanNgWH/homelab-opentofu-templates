@@ -47,6 +47,9 @@
 - name: piped
   config_name: piped
 
+- name: prometheus
+  config_name: prometheus
+
 - name: prowlarr
   config_name: prowlarr
 

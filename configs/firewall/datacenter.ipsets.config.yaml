@@ -24,6 +24,16 @@
     - sapphire_sonarr
     - tiny_airport_privilege
 
+- name: lan_airport_admins
+  comment: "[LAN + Airport - admins] Lan & Tiny airport admins"
+  children:
+    - lan_ryan_amalie_ethernet
+    - lan_ryan_amalie_wifi
+    - lan_ryan_luna
+    - lan_ryan_rose
+    - tiny_airport_ryan_luna
+    - tiny_airport_ryan_rose
+
 - name: lan_airport_privilege
   comment: "[LAN + Airport - privilege] Entire lan network & Tiny airport privilege users"
   children:
