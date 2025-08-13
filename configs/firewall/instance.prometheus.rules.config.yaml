@@ -1,6 +1,6 @@
-# Prometheus metrics aggreation server instance firewall rules
+# Prometheus metrics aggregation server instance firewall rules
 # ---
-# Firewall rules for the Prometheus metrics aggreation server instance.
+# Firewall rules for the Prometheus metrics aggregation server instance.
 
 presets:
   - name: basic
