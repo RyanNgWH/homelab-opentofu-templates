@@ -12,6 +12,14 @@ presets:
       source_description: LAN & Tiny_Airport admins
       application: Prometheus
 
-specifics: []
+specifics:
+  - action: ACCEPT
+    type: in
+    source: sabi_grafana
+    source_ipset: false
+    dest: melanie_prometheus
+    dest_ipset: false
+    macro: HTTPS
+    comment: "[Grafana - HTTPS] [Allow] Sabi Grafana data visualisation to Prometheus metrics aggregation"
 
 options:

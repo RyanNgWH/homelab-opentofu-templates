@@ -1,0 +1,25 @@
+# Grafana data visualisation server instance firewall rules
+# ---
+# Firewall rules for the Grafana data visualisation server instance.
+
+presets:
+  - name: basic
+  - name: uptime
+  - name: web
+    vars:
+      source_alias: lan_airport_privilege
+      source_alias_is_ipset: true
+      source_description: LAN & Tiny_Airport privilege
+      application: Grafana
+
+specifics:
+  - action: ACCEPT
+    type: in
+    source: melanie_prometheus
+    source_ipset: false
+    dest: sabi_grafana
+    dest_ipset: false
+    macro: HTTPS
+    comment: "[Prometheus - HTTPS] [Allow] Melanie Prometheus metrics aggregation server to Sabi Grafana data visualisation metrics"
+
+options:

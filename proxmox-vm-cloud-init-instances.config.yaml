@@ -17,6 +17,9 @@
 - name: gitea
   config_name: gitea
 
+- name: grafana
+  config_name: grafana
+
 - name: homarr
   config_name: homarr
 
