@@ -26,8 +26,8 @@ locals {
               host_name                   = title(try(instance.name, instance.initialization[0].hostname))
               host_description            = instance.description
 
-              # Uptime rules variables (to be changed when uptime vm is created)
-              uptime_alias = "serene_uptime-kuma"
+              # Uptime rules variables
+              uptime_alias = try(proxmox_virtual_environment_firewall_alias.datacenter["uptime-kuma"].name, "serene_uptime-kuma")
               uptime_name  = "Uptime Kuma"
 
               # Web rules variables
