@@ -5,6 +5,7 @@
 presets:
   - name: basic
   - name: uptime
+  - name: node-exporter
   - name: web
     vars:
       source_alias: jellyfin_clients

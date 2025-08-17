@@ -1,0 +1,15 @@
+# Proxmox instance firewall rules (Node-exporter)
+# ---
+# Node exporter firewall rules for individual instances.
+
+# Allow node exporter metrics
+- action: ACCEPT
+  type: in
+  source: ${prometheus_alias}
+  source_ipset: false
+  dest: ${host_alias}
+  dest_ipset: false
+  dest_port: 9110
+  protocol: tcp
+  comment: "[Prometheus - Metrics] [Allow] ${prometheus_name} to ${host_name} ${host_description} server"
+  log: nolog

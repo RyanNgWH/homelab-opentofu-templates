@@ -4,6 +4,7 @@
 
 presets:
   - name: basic
+  - name: node-exporter
 
 specifics:
   - action: ACCEPT

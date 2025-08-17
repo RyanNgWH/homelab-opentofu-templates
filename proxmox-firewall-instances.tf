@@ -30,6 +30,10 @@ locals {
               uptime_alias = try(proxmox_virtual_environment_firewall_alias.datacenter["uptime-kuma"].name, "serene_uptime-kuma")
               uptime_name  = "Uptime Kuma"
 
+              # Node-exporter variables
+              prometheus_alias = try(proxmox_virtual_environment_firewall_alias.datacenter["prometheus"].name, "melanie_prometheus")
+              prometheus_name  = "Prometheus"
+
               # Web rules variables
               source_alias          = try(preset.vars.source_alias, "\"\"")
               source_alias_is_ipset = try(preset.vars.source_alias_is_ipset, "false")
