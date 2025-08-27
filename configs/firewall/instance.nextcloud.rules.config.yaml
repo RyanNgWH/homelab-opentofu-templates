@@ -67,10 +67,10 @@ specifics:
     type: out
     source: wendy_nextcloud
     source_ipset: false
-    dest: sunny_proton-bridge-relay
-    dest_ipset: false
-    macro: SMTP
-    comment: "[Proton - SMTP] [Allow] Wendy Nextcloud cloud storage to Sunny Proton bridge smtp relay server"
+    dest: protonmail_ip_ranges
+    dest_ipset: true
+    macro: Submission
+    comment: "[Proton - STARTTLS] [Allow] Wendy Nextcloud cloud storage to Protonmail smtp servers"
 
   - action: ACCEPT
     type: out

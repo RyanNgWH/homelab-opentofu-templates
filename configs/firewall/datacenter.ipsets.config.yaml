@@ -88,6 +88,21 @@
     - sierra_proxmox
     - solar_scrutiny
 
+- name: protonmail_ip_ranges
+  comment: "Protonmail IP ranges"
+  children:
+    - 109.224.244.0/24
+    - 109.224.247.0/24
+    - 176.119.200.0/24
+    - 185.205.70.0/24
+    - 185.70.40.0/24
+    - 185.70.41.0/24
+    - 185.70.42.0/24
+    - 185.70.43.0/24
+    - 194.0.147.0/24
+    - 79.135.106.0/24
+    - 79.135.107.0/24
+
 - name: prowlarr_clients
   comment: "Clients accessing Prowlarr indexers manager"
   children:
@@ -128,18 +143,3 @@
     - hanni_homarr
     - juliette_jellyseerr
     - pearl_prowlarr
-
-- name: smtp_clients
-  comment: "Clients accessing proton bridge smtp relay server"
-  children:
-    - alora_firefly
-    - alyssa_paperless
-    - rosabelle_router_hq
-    - sana_wallos
-    - seori_nas
-    - serene_uptime-kuma
-    - solar_scrutiny
-    - tiffany_vikunja
-    - wendy_nextcloud
-    - winter_wikijs
-    - yena_gitea
