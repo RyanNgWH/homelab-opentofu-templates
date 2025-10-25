@@ -80,6 +80,7 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
     flags   = try(each.value.cpu_flags, ["+md-clear", "+pcid", "+spec-ctrl", "+ssbd", "+pdpe1gb", "+aes"])
     numa    = try(each.value.cpu_enable_numa, true)
     type    = try(each.value.cpu_type, "host")
+    units   = try(each.value.cpu_units, 1024)
   }
 
   # Memory configuration
