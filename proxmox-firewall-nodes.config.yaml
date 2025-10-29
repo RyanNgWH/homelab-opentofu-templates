@@ -1,0 +1,8 @@
+# Proxmox nodes firewall
+# ---
+# Proxmox nodes firewall configuration options
+
+nodes:
+  sierra:
+    name: sierra
+    description: proxmox
