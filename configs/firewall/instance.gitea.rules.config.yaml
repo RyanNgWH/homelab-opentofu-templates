@@ -21,7 +21,7 @@ specifics:
     dest: yena_gitea
     dest_ipset: false
     macro: HTTPS
-    comment: "[Gitea - HTTPS] [Allow] Gitea HTTPS clients to Gemma git hosting server"
+    comment: "[Gitea - HTTPS] [Allow] Gitea HTTPS clients to Yena git hosting server"
     log: nolog
 
   - action: ACCEPT
@@ -31,7 +31,7 @@ specifics:
     dest: yena_gitea
     dest_ipset: false
     macro: SSH
-    comment: "[Gitea - SSH] [Allow] Gitea SSH clients to Gemma git hosting server"
+    comment: "[Gitea - SSH] [Allow] Gitea SSH clients to Yena git hosting server"
     log: nolog
 
 options:
