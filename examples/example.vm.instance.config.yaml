@@ -34,8 +34,6 @@ cloud_init_ipv4_gateway: 172.28.20.1
 vm_tags:
   - opentofu
 
-vm_resource_pool: ""
-
 vm_start_on_boot: false
 vm_startup_order: 100
 vm_startup_delay: 0

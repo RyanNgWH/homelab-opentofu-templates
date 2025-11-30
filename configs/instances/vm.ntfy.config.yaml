@@ -36,8 +36,6 @@ vm_tags:
   - opentofu
   - tiny-hq
 
-vm_resource_pool: ""
-
 vm_start_on_boot: true
 vm_startup_order: 1
 vm_startup_delay: 0

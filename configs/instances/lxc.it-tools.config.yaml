@@ -33,7 +33,6 @@ lxc_tags:
   - ansible
   - opentofu
   - tiny-island
-lxc_resource_pool: ""
 
 lxc_start_on_boot: true
 lxc_startup_order: 5

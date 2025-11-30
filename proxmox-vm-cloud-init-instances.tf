@@ -49,7 +49,6 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   tags        = try(each.value.vm_tags, ["opentofu"])
 
   node_name = each.value.vm_node_name
-  pool_id   = try(each.value.vm_resource_pool, "")
 
   on_boot = try(each.value.vm_start_on_boot, false)
   startup {

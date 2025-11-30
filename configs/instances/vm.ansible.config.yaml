@@ -35,8 +35,6 @@ vm_tags:
   - ansible
   - opentofu
 
-vm_resource_pool: ""
-
 vm_start_on_boot: false
 vm_startup_order: 100
 vm_startup_delay: 0
