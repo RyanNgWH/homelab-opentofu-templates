@@ -60,6 +60,9 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   protection = try(each.value.vm_enable_protection, false)
   started    = try(each.value.vm_started, true)
 
+  purge_on_destroy                     = try(each.value.vm_purge_on_destroy, "true")
+  delete_unreferenced_disks_on_destroy = try(each.value.vm_delete_unreferenced_disks, "true")
+
   # System configuration
   agent {
     enabled = try(each.value.system_qemu_enabled, true)
