@@ -13,7 +13,7 @@ mappings:
   - id: "10de:1b81"
     path: "0000:04:00"
     node: sierra
-    iommu_group: 42
+    iommu_group: 43
     subsystem_id: "10de:119d"
 
     comment: "[Sierra] Nvidia GTX 1070 PCIe mapping"
