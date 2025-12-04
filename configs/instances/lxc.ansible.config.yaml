@@ -22,7 +22,7 @@ network_ipv4: 172.28.20.253/24
 network_ipv4_gateway: 172.28.20.1
 
 # OS Configuration
-os_template_name: debian-12.10-minimal
+os_template_name: debian-13.2-minimal
 os_template_type: debian
 
 # Default variables (default values are usually okay)
