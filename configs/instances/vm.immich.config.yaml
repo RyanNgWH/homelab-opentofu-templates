@@ -86,6 +86,16 @@ storage_enable_replication: true
 storage_emulate_ssd: true
 storage_size: 32
 
+database_disks:
+  - database_interface: scsi1
+    database_pool: local-zfs-postgres
+    database_enable_backup: true
+    database_enable_discard: true
+    database_enable_io_threads: true
+    database_enable_replication: true
+    database_emulate_ssd: true
+    database_size: 8
+
 efi_disk: []
 
 # Cloud-init configuration
