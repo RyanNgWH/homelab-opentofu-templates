@@ -96,11 +96,27 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
     interface    = "scsi0"
     datastore_id = try(each.value.storage_pool, "local-zfs")
     backup       = try(each.value.storage_enable_backup, true)
-    discard      = try(each.value.storage_enable_discard ? "on" : "ignore", true)
+    discard      = try(each.value.storage_enable_discard ? "on" : "ignore", "on")
     iothread     = try(each.value.storage_enable_io_threads, true)
     replicate    = try(each.value.storage_enable_replication, true)
     ssd          = try(each.value.storage_emulate_ssd, true)
     size         = try(each.value.storage_size, 8)
+  }
+
+  dynamic "disk" {
+    for_each = try(each.value.database_disks, [])
+    iterator = db
+
+    content {
+      interface    = db.value.database_interface
+      datastore_id = db.value.database_pool
+      backup       = try(db.value.database_enable_backup, true)
+      discard      = try(db.value.database_enable_discard ? "on" : "ignore", "on")
+      iothread     = try(db.value.database_enable_io_threads, true)
+      replicate    = try(db.value.database_enable_replication, true)
+      ssd          = try(db.value.database_emulate_ssd, true)
+      size         = try(db.value.database_size, 8)
+    }
   }
 
   dynamic "efi_disk" {
