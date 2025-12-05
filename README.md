@@ -286,7 +286,7 @@ tofu apply -parallelism=3
 
 ## EFI-Disk & Secure boot
 
-The Jellyfin & NAS instances requires secure boot to be turned off, however, it is enabled by default as `pre_enrolled_keys` is enabled for the EFI-Disk. This currently cannot be automated as of bpg/proxmox v0.60.1 and has to be manually turned off in the bios.
+The NAS instance requires secure boot to be turned off (as zfs is built on dkms), however, it is enabled by default as `pre_enrolled_keys` is enabled for the EFI-Disk. This currently cannot be automated as of bpg/proxmox v0.60.1 and has to be manually turned off in the bios.
 
 # To-Do
 
