@@ -104,18 +104,18 @@ resource "proxmox_virtual_environment_vm" "cloud_init_instances" {
   }
 
   dynamic "disk" {
-    for_each = try(each.value.database_disks, [])
+    for_each = try(each.value.additional_disks, [])
     iterator = db
 
     content {
-      interface    = db.value.database_interface
-      datastore_id = db.value.database_pool
-      backup       = try(db.value.database_enable_backup, true)
-      discard      = try(db.value.database_enable_discard ? "on" : "ignore", "on")
-      iothread     = try(db.value.database_enable_io_threads, true)
-      replicate    = try(db.value.database_enable_replication, true)
-      ssd          = try(db.value.database_emulate_ssd, true)
-      size         = try(db.value.database_size, 8)
+      interface    = db.value.interface
+      datastore_id = db.value.pool
+      backup       = try(db.value.enable_backup, true)
+      discard      = try(db.value.enable_discard ? "on" : "ignore", "on")
+      iothread     = try(db.value.enable_io_threads, true)
+      replicate    = try(db.value.enable_replication, true)
+      ssd          = try(db.value.emulate_ssd, true)
+      size         = try(db.value.size, 8)
     }
   }
 
