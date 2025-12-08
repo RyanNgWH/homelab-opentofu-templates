@@ -114,9 +114,4 @@ cloud_init_datastore: local
 clone_enable_full_clone: true
 
 # PCI passthrough configuration
-pci_devices:
-  - device: hostpci0
-    mapping: jellyfin-gpu
-    pcie: true
-    rombar: true
-    xvga: false
+pci_devices: []
