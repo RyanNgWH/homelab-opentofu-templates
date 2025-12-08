@@ -11,6 +11,3 @@ templates:
 instances:
   - name: ansible-lxc
     config_name: ansible
-
-  - name: mat2-web
-    config_name: mat2-web
