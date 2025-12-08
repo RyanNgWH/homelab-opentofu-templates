@@ -14,6 +14,3 @@ instances:
 
   - name: mat2-web
     config_name: mat2-web
-
-  - name: stirling-pdf
-    config_name: stirling-pdf

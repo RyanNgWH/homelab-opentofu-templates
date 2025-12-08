@@ -74,6 +74,9 @@
 - name: sonarr
   config_name: sonarr
 
+- name: stirling-pdf
+  config_name: stirling-pdf
+
 - name: uptime-kuma
   config_name: uptime-kuma
 
