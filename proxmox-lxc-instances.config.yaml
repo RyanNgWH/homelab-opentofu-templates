@@ -12,9 +12,6 @@ instances:
   - name: ansible-lxc
     config_name: ansible
 
-  - name: it-tools
-    config_name: it-tools
-
   - name: mat2-web
     config_name: mat2-web
 

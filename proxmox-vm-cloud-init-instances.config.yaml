@@ -26,6 +26,9 @@
 - name: immich
   config_name: immich
 
+- name: it-tools
+  config_name: it-tools
+
 - name: jellyfin
   config_name: jellyfin
 
