@@ -96,6 +96,15 @@ database_disks:
     database_emulate_ssd: true
     database_size: 8
 
+  - database_interface: scsi2
+    database_pool: local-zfs-appdata
+    database_enable_backup: true
+    database_enable_discard: true
+    database_enable_io_threads: true
+    database_enable_replication: true
+    database_emulate_ssd: true
+    database_size: 8
+
 efi_disk: []
 
 # Cloud-init configuration
