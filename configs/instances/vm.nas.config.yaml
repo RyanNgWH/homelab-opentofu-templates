@@ -88,7 +88,11 @@ storage_enable_replication: true
 storage_emulate_ssd: true
 storage_size: 16
 
-efi_disk: []
+efi_disk:
+  - storage_pool: local-zfs
+    file_format: raw
+    pre_enrolled_keys: false
+    type: 4m
 
 # Cloud-init configuration
 cloud_init_datastore: local
