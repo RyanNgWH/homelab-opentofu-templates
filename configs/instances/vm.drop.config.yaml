@@ -98,6 +98,15 @@ additional_disks:
     emulate_ssd: true
     size: 8
 
+  - interface: scsi2
+    pool: local-zfs-appdata
+    enable_backup: true
+    enable_discard: true
+    enable_io_threads: true
+    enable_replication: true
+    emulate_ssd: true
+    size: 8
+
 efi_disk: []
 
 # Cloud-init configuration
