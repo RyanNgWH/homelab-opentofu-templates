@@ -1,0 +1,18 @@
+# Ollama LLM runner instance firewall rules
+# ---
+# Firewall rules for the Ollama LLM runner instance.
+
+presets:
+  - name: basic
+  - name: uptime
+  - name: node-exporter
+  - name: web
+    vars:
+      source_alias: lan_airport_privilege
+      source_alias_is_ipset: true
+      source_description: LAN & Tiny_Airport privilege
+      application: Ollama
+
+specifics: []
+
+options:

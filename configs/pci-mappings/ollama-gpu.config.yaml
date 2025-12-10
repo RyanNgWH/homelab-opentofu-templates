@@ -1,19 +1,19 @@
-# Proxmox Jellyfin GPU PCIe mapping
+# Proxmox Ollama GPU PCIe mapping
 # ---
-# Variables for Jellyfin GPU PCIe mapping
+# Variables for Ollama GPU PCIe mapping
 # Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_hardware_mapping_pci
 
 # Required variables (Should be changed)
 # ---
-name: jellyfin-gpu
-comment: "[Marilyn] Jellyfin GPU passthrough"
+name: ollama-gpu
+comment: "[Olivia] Ollama GPU passthrough"
 
 mappings:
   # Check Datacenter > Resource Mappings for id, path, iommu_group and subsystem_id
   - id: "10de:1b81"
     path: "0000:04:00"
     node: sierra
-    iommu_group: 42
+    iommu_group: 43
     subsystem_id: "10de:119d"
 
     comment: "[Sierra] Nvidia GTX 1070 PCIe mapping"

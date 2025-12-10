@@ -50,6 +50,9 @@
 - name: ntfy
   config_name: ntfy
 
+- name: ollama
+  config_name: ollama
+
 - name: paperless
   config_name: paperless
 

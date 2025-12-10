@@ -1,0 +1,126 @@
+# Ollama
+# ---
+# Variables for the Ollama LLM runner instance
+# Variable details can be found at https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_vm
+
+# Required variables (Should be changed)
+# ---
+# VM configuration
+vm_id: 20050
+vm_name: olivia
+vm_description: Ollama LLM runner
+
+vm_node_name: sierra
+
+# Network configuration
+network_vlan_id: 20
+
+# Template clone
+clone_node_name: sierra
+clone_node_id: 99999
+
+# Cloud-init configuration
+cloud_init_dns_domain: tinynamoo.com
+cloud_init_dns_servers:
+  - 172.28.20.1
+
+cloud_init_ipv4: 172.28.20.50/24
+cloud_init_ipv4_gateway: 172.28.20.1
+
+# Default variables (default values are usually okay)
+# ---
+# VM configuration
+# Should be sorted, else will always report as a change.
+vm_tags:
+  - ansible
+  - opentofu
+  - tiny-island
+
+vm_start_on_boot: true
+vm_startup_order: 3
+vm_startup_delay: 0
+vm_shutdown_delay: 0
+
+vm_enable_protection: false
+vm_started: true
+
+# System configuration
+system_qemu_enabled: true
+system_qemu_trim: true
+
+system_bios: ovmf
+system_machine_type: q35
+system_scsi_hardware: virtio-scsi-single
+
+system_boot_order:
+  - scsi0
+
+# CPU configuration
+cpu_type: host
+cpu_sockets: 1
+cpu_cores: 8
+cpu_flags:
+  - +md-clear
+  - +pcid
+  - +spec-ctrl
+  - +ssbd
+  - +pdpe1gb
+  - +aes
+
+cpu_enable_numa: true
+
+# Memory configuration
+memory_max_size: 65536
+memory_min_size: 32768
+
+# Network configuration
+network_bridge: vmbr0
+network_enable_firewall: true
+
+# Storage configuration (cloud-init disk)
+storage_pool: local-zfs
+storage_enable_backup: true
+storage_enable_discard: true
+storage_enable_io_threads: true
+storage_enable_replication: true
+storage_emulate_ssd: true
+storage_size: 32
+
+additional_disks:
+  - interface: scsi1
+    pool: local-zfs-postgres
+    enable_backup: true
+    enable_discard: true
+    enable_io_threads: true
+    enable_replication: true
+    emulate_ssd: true
+    size: 8
+
+  - interface: scsi2
+    pool: local-zfs-appdata
+    enable_backup: true
+    enable_discard: true
+    enable_io_threads: true
+    enable_replication: true
+    emulate_ssd: true
+    size: 256
+
+efi_disk:
+  - storage_pool: local-zfs
+    file_format: raw
+    pre_enrolled_keys: false
+    type: 4m
+
+# Cloud-init configuration
+cloud_init_datastore: local
+
+# Template clone
+clone_enable_full_clone: true
+
+# PCI passthrough configuration
+pci_devices:
+  - device: hostpci0
+    mapping: ollama-gpu
+    pcie: true
+    rombar: true
+    xvga: false

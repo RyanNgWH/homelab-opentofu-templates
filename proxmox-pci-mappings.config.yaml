@@ -2,8 +2,8 @@
 # ---
 # Proxmox PCI mappings to manage using OpenTofu
 
-- name: jellyfin-gpu
-  config_name: jellyfin-gpu
+- name: ollama-gpu
+  config_name: ollama-gpu
 
 - name: nas-ssata
   config_name: nas-ssata
