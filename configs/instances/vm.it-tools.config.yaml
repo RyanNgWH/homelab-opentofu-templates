@@ -39,7 +39,7 @@ vm_tags:
   - tiny-island
 
 vm_start_on_boot: true
-vm_startup_order: 5
+vm_startup_order: 3
 vm_startup_delay: 0
 vm_shutdown_delay: 0
 
