@@ -88,6 +88,11 @@
     - sierra_proxmox
     - solar_scrutiny
 
+- name: ollama_clients
+  comment: "Clients accessing Ollama API"
+  children:
+    - kiara_karakeep
+
 - name: protonmail_ip_ranges
   comment: "Protonmail IP ranges"
   children:

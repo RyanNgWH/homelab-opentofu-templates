@@ -11,18 +11,8 @@ presets:
       source_alias: lan_airport_privilege
       source_alias_is_ipset: true
       source_description: LAN & Tiny_Airport privilege
-      application: Ollama
+      application: Karakeep
 
-specifics:
-  - action: ACCEPT
-    type: in
-    source: ollama_clients
-    source_ipset: true
-    dest: olivia_ollama
-    dest_ipset: false
-    dest_port: 11435
-    protocol: tcp
-    comment: "[Ollama - HTTPS] [Allow] Ollama clients to Ollama API server"
-    log: nolog
+specifics: []
 
 options:

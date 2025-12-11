@@ -35,6 +35,9 @@
 - name: jellyseerr
   config_name: jellyseerr
 
+- name: karakeep
+  config_name: karakeep
+
 - name: mat2-web
   config_name: mat2-web
 
