@@ -37,11 +37,11 @@ vm_tags:
   - tiny-island
 
 vm_start_on_boot: true
-vm_startup_order: 3
+vm_startup_order: 2
 vm_startup_delay: 0
 vm_shutdown_delay: 0
 
-vm_enable_protection: false
+vm_enable_protection: true
 vm_started: true
 
 # System configuration
