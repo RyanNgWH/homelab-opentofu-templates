@@ -11,7 +11,7 @@ presets:
       source_alias: lan_airport_privilege
       source_alias_is_ipset: true
       source_description: LAN & Tiny_Airport privilege
-      application: Immich
+      application: Ntfy
 
 specifics:
   - action: ACCEPT
@@ -26,10 +26,21 @@ specifics:
 
   - action: ACCEPT
     type: in
+    source: telegram_ip_ranges
+    source_ipset: true
+    dest: karina_ntfy
+    dest_ipset: false
+    macro: HTTPS
+    comment: "[Telegram - HTTPS] [Allow] Telegram servers to Karina Ntfy notification service (for UnifiedPush)"
+
+  - action: ACCEPT
+    type: in
+    source: protonmail_ip_ranges
+    source_ipset: true
     dest: karina_ntfy
     dest_ipset: false
     macro: SMTP
-    comment: "[Public - SMTP] [Allow] Any to Karina Ntfy notification service"
+    comment: "[Protonmail - SMTP] [Allow] Protonmail to Karina Ntfy notification service"
 
   - action: ACCEPT
     type: out
@@ -57,28 +68,6 @@ specifics:
     dest_ipset: false
     macro: NTP
     comment: "[OPNsense - NTP] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router NTP server"
-
-  - action: ACCEPT
-    type: out
-    source: karina_ntfy
-    source_ipset: false
-    dest: seori_nas
-    dest_ipset: false
-    dest_port: 88
-    protocol: udp
-    log: notice
-    comment: "[NAS - Kerberos KDC] [Allow] Karina Ntfy notification service to Seori network attached Kerberos KDC server"
-
-  - action: ACCEPT
-    type: out
-    source: karina_ntfy
-    source_ipset: false
-    dest: seori_nas
-    dest_ipset: false
-    dest_port: 2049
-    protocol: tcp
-    log: notice
-    comment: "[NAS - NFSv4] [Allow] Karina Ntfy notification service to Seori network attached NFSv4 server"
 
   - action: ACCEPT
     type: out
