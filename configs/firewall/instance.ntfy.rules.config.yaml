@@ -35,7 +35,7 @@ specifics:
     type: out
     source: karina_ntfy
     source_ipset: false
-    dest: rosabelle_router_hq
+    dest: rosabelle_router_hotel
     dest_ipset: false
     macro: Ping
     comment: "[OPNsense - ICMP] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router"
@@ -44,7 +44,7 @@ specifics:
     type: out
     source: karina_ntfy
     source_ipset: false
-    dest: rosabelle_router_hq
+    dest: rosabelle_router_hotel
     dest_ipset: false
     macro: DNS
     comment: "[OPNsense - DNS] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router DNS server"
@@ -53,7 +53,7 @@ specifics:
     type: out
     source: karina_ntfy
     source_ipset: false
-    dest: rosabelle_router_hq
+    dest: rosabelle_router_hotel
     dest_ipset: false
     macro: NTP
     comment: "[OPNsense - NTP] [Allow] Karina Ntfy notification service to Rosabelle OPNsense router NTP server"
