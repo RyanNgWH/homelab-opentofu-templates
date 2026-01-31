@@ -34,7 +34,7 @@ cloud_init_ipv4_gateway: 172.28.14.1
 vm_tags:
   - ansible
   - opentofu
-  - tiny-hq
+  - tiny-hotel
 
 vm_start_on_boot: true
 vm_startup_order: 1
